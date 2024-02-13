@@ -9,7 +9,7 @@ An online U-Fund system built in Java 17=> and ___ _replace with other platform 
 - Graden Olson
 - Vincent Son
 - Benjamin Hemmers
--Guancheng Liu
+- Guancheng Liu
 
 ## Prerequisites
 
