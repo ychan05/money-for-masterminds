@@ -6,7 +6,7 @@ An online U-Fund system built in Java 17=> and ___ _replace with other platform 
 ## Team
 
 - Yat Long Chan
-- MEMBER2
+- Graden Olson
 - MEMBER3
 - MEMBER4
 
