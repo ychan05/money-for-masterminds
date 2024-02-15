@@ -7,13 +7,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /*  
  * Represents a Need entity
  * 
- * @author Graden Olson
+ * @author Graden Olson, Yat Long Chan
 */
 public class Need {
     private static final Logger LOG = Logger.getLogger(Need.class.getName());
 
-    static final String STRING_FORMAT = "Need [name=%s, price=%f, quantity=%d]";
+    static final String STRING_FORMAT = "Need [id=%d, name=%s, price=%f, quantity=%d]";
 
+    @JsonProperty("id") private int id;
     @JsonProperty("name") private String name;
     @JsonProperty("price") private double price;
     @JsonProperty("quantity") private int quantity;
@@ -24,11 +25,24 @@ public class Need {
      * @param price The price of the Need
      * @param quantity The quantity of the Need
      */
-    public Need(@JsonProperty("name") String name, @JsonProperty("price") double price, @JsonProperty("quantity") int quantity){
+    public Need(@JsonProperty("id") int id, @JsonProperty("name") String name, @JsonProperty("price") double price, @JsonProperty("quantity") int quantity){
+        this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
     }
+
+    /**
+     * Retrieves the id of the Need
+     * @return The id of the Need
+     */
+    public int getId() {return id;}
+
+    /**
+     * Sets the id of the Need
+     * @param id The id of the Need
+     */
+    public void setId(int id) {this.id = id;}
 
     /**
      * Retrieves the name of the Need
