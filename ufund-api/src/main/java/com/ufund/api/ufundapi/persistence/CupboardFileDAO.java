@@ -24,6 +24,9 @@ import com.needs.api.needsapi.model.Need;
  */
 public class CupboardFileDAO {
     private static final Logger LOG = Logger.getLogger(CupboardFileDAO.class.getName());
+    Map<Integer,Need> needs;   // Provides a local cache of the need objects
+                                // so that we don't need to read from the file
+                                // each time
     private ObjectMapper objectMapper;  // Provides conversion between Need
                                         // objects and JSON text format written
                                         // to the file
