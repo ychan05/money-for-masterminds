@@ -25,7 +25,8 @@ public class Need {
      * @param price The price of the Need
      * @param quantity The quantity of the Need
      */
-    public Need(@JsonProperty("name") String name, @JsonProperty("price") double price, @JsonProperty("quantity") int quantity){
+    public Need(@JsonProperty("id") int id, @JsonProperty("name") String name, @JsonProperty("price") double price, @JsonProperty("quantity") int quantity){
+        this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
