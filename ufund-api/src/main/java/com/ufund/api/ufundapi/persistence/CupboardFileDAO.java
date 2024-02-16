@@ -151,9 +151,14 @@ public class CupboardFileDAO implements CupboardDAO {
     }
 
     @Override
-    public Need createNeed(Need hero) throws IOException {
-        // TODO Auto-generated method stub
-        return null;
+    public Need createNeed(Need need) throws IOException {
+        synchronized(needs){
+            // Create a new need object with the next unique id
+            Need newNeed = new Need(nextId(), need.getName(), need.getPrice(), need.getQuantity());
+            needs.put(newNeed.getId(), newNeed);
+            save(); // may throw an IOException
+            return newNeed;
+        }
     }
 
     @Override

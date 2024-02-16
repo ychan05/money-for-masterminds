@@ -72,7 +72,7 @@ public class Need {
      * Retrieves the quantity of the Need
      * @return The quantity of the Need
      */
-    public int getQuantity(int quantity) {return quantity;}
+    public int getQuantity() {return quantity;}
 
     /**
      * Sets the quantity of the Need
