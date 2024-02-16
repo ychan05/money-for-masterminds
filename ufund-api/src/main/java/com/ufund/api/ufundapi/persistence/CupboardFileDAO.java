@@ -22,7 +22,7 @@ import com.ufund.api.ufundapi.model.Need;
  * 
  * @author Yat Long Chan
  */
-public class CupboardFileDAO {
+public class CupboardFileDAO implements CupboardDAO {
     private static final Logger LOG = Logger.getLogger(CupboardFileDAO.class.getName());
     Map<Integer,Need> needs;   // Provides a local cache of the need objects
                                 // so that we don't need to read from the file
@@ -136,4 +136,18 @@ public class CupboardFileDAO {
         return true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public boolean deleteNeed(int id) throws IOException {
+        synchronized(needs) {
+            if (needs.containsKey(id)) {
+                needs.remove(id);
+                return save();
+            } else {
+                return false;
+            }
+        }
+
+    }
 }
