@@ -148,6 +148,35 @@ public class CupboardFileDAO implements CupboardDAO {
                 return false;
             }
         }
+    }
 
+    @Override
+    public Need createNeed(Need hero) throws IOException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Need updateNeed(Need need) throws IOException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Need[] findNeeds(String containsText) throws IOException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Need getNeed(int id) throws IOException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Need[] getNeeds() throws IOException {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
