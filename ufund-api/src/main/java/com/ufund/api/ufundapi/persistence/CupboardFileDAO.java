@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.needs.api.needsapi.model.Need;
+import com.ufund.api.ufundapi.model.Need;
 
 /**
  * Implements the functionality for JSON peristence for Cupboard
@@ -41,7 +41,7 @@ public class CupboardFileDAO {
      * 
      * @throws IOException when file cannot be accessed or read from
      */
-    public NeedFileDAO(@Value("${cupboard.file}") String filename,ObjectMapper objectMapper) throws IOException {
+    public CupboardFileDAO(@Value("${cupboard.file}") String filename,ObjectMapper objectMapper) throws IOException {
         this.filename = filename;
         this.objectMapper = objectMapper;
         load();  // load the cupboard from the file
@@ -98,7 +98,7 @@ public class CupboardFileDAO {
      * @throws IOException when file cannot be accessed or written to
      */
     private boolean save() throws IOException {
-        Need[] needArray = getNeedesArray();
+        Need[] needArray = getNeedsArray();
 
         // Serializes the Java Objects to JSON objects into the file
         // writeValue will thrown an IOException if there is an issue
