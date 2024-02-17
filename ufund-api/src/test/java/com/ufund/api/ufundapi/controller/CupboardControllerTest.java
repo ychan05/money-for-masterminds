@@ -19,7 +19,7 @@ import org.springframework.http.ResponseEntity;
 /**
  * Test Controller for Cupboard
  * 
- * @author Yat Long Chan
+ * @author Yat Long Chan, Graden Olson
  */
 public class CupboardControllerTest {
     private CupboardController controller;
@@ -59,5 +59,51 @@ public class CupboardControllerTest {
 
         // analyze
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
+
+    @Test
+    public void testCreateNeed() throws IOException{
+        // setup
+        Need need = new Need(1, "need", 6.00, 345);
+
+        // simulate success
+        when(dao.createNeed(need)).thenReturn(need);
+
+        // invoke
+        ResponseEntity<Need> response = controller.createNeed(need);
+
+        // analyze
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(need, response.getBody());
+    }
+
+    @Test
+    public void testCreateNeedFailed() throws IOException{
+        // setup
+        Need need = new Need(1, "need", 6.00, 345);
+
+        // simulate failure
+        when(dao.createNeed(need)).thenReturn(null);
+
+        // invoke
+        ResponseEntity<Need> response = controller.createNeed(need);
+
+        // analyze
+        assertEquals(HttpStatus.CONFLICT, response.getStatusCode());
+    }
+
+    @Test
+    public void testCreateNeedHandleException() throws IOException {
+        // setup
+        Need need = new Need(1, "need", 6.00, 345);
+
+        // simulate IOException
+        doThrow(new IOException()).when(dao).createNeed(need);
+
+        // invoke
+        ResponseEntity<Need> response = controller.createNeed(need);
+
+        // analyze
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
 }

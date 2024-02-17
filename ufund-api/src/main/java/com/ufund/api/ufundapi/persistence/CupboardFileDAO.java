@@ -20,7 +20,7 @@ import com.ufund.api.ufundapi.model.Need;
  * {@literal @}Component Spring annotation instantiates a single instance of this
  * class and injects the instance into other classes as needed
  * 
- * @author Yat Long Chan
+ * @author Yat Long Chan, Graden Olson
  */
 public class CupboardFileDAO implements CupboardDAO {
     private static final Logger LOG = Logger.getLogger(CupboardFileDAO.class.getName());
