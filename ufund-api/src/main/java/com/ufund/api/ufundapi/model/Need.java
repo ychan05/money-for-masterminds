@@ -31,6 +31,12 @@ public class Need {
         this.price = price;
         this.quantity = quantity;
     }
+    public Need(@JsonProperty("name") String name, @JsonProperty("price") double price, @JsonProperty("quantity") int quantity){
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+    
 
     /**
      * Retrieves the id of the Need
