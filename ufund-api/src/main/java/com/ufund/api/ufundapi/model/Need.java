@@ -84,6 +84,6 @@ public class Need {
      * {@inheritDoc}
      */
     public String toString() {
-        return String.format(STRING_FORMAT, name, price, quantity);
+        return String.format(STRING_FORMAT, id, name, price, quantity);
     }
 }
