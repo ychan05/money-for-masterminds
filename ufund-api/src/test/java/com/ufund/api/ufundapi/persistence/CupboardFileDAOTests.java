@@ -64,4 +64,23 @@ public class CupboardFileDAOTests {
         assertEquals(true, result); // check that the delete was successful
         assertEquals(testNeeds.length - 1, dao.needs.size()); // check that the size of the needs map has decreased
     }
+
+    @Test
+    public void testGetNeedNotFound() throws IOException {
+        // invoke
+        Need result = assertDoesNotThrow(() -> dao.getNeed(100), "getNeed should not throw an exception");
+        
+        // analyze
+        assertNull(result); // check that the need was not found
+    }
+
+    @Test
+    public void testGetNeed() throws IOException {
+        // invoke
+        Need result = assertDoesNotThrow(() -> dao.getNeed(1), "getNeed should not throw an exception");
+        
+        // analyze
+        assertNotNull(result); // check that the need was found
+        assertEquals(testNeeds[1], result); // check that the need is the expected need
+    }
 }
