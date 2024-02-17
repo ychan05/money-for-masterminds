@@ -60,4 +60,19 @@ public class CupboardControllerTest {
         // analyze
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
+
+    @Test
+    public void deleteNeedError() throws IOException {
+        // setup
+        int id = 1;
+
+        // simulate error
+        doThrow(new IOException()).when(dao).deleteNeed(id);
+        
+        // invoke
+        ResponseEntity<?> response = controller.deleteNeed(id);
+
+        // analyze
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    }
 }
