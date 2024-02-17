@@ -56,7 +56,11 @@ public class CupboardController {
         LOG.info("POST /needs " + need);
 
         try{
-            return new ResponseEntity<Need>(cupboardDAO.createNeed(need), HttpStatus.CREATED);
+            Need newNeed = cupboardDAO.createNeed(need);
+            if(newNeed == null){
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
+            }
+            else return new ResponseEntity<Need>(newNeed, HttpStatus.CREATED);
         }
         catch(IOException e){
             LOG.log(Level.SEVERE,e.getLocalizedMessage());
