@@ -68,7 +68,7 @@ public class CupboardFileDAOTests {
     @Test
     public void testCreateNeed() throws IOException {
         // setup
-        Need need = new Need(1, "need", 6.00, 345);
+        Need need = new Need(999, "hello", 39.99, 2);
 
         // invoke
         Need result = assertDoesNotThrow(() -> dao.createNeed(need), "Unexpected exception thrown");
@@ -80,5 +80,24 @@ public class CupboardFileDAOTests {
         assertEquals(actual.getName(), need.getName());
         assertEquals(actual.getPrice(), need.getPrice());
         assertEquals(actual.getQuantity(), need.getQuantity());
+    }
+
+    @Test
+    public void testGetNeedNotFound() throws IOException {
+        // invoke
+        Need result = assertDoesNotThrow(() -> dao.getNeed(100), "getNeed should not throw an exception");
+        
+        // analyze
+        assertNull(result); // check that the need was not found
+    }
+
+    @Test
+    public void testGetNeed() throws IOException {
+        // invoke
+        Need result = assertDoesNotThrow(() -> dao.getNeed(1), "getNeed should not throw an exception");
+        
+        // analyze
+        assertNotNull(result); // check that the need was found
+        assertEquals(testNeeds[1], result); // check that the need is the expected need
     }
 }

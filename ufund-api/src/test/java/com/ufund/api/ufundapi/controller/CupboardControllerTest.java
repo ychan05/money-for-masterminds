@@ -106,4 +106,47 @@ public class CupboardControllerTest {
         // analyze
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
+
+    @Test
+    public void getNeed() throws IOException {
+        // setup
+        Need need = new Need(1, "nuke", 100, 1);
+
+        when(dao.getNeed(need.getId())).thenReturn(need); // simulate a need successfully being found
+        
+        // invoke
+        ResponseEntity<Need> response = controller.getNeed(need.getId()); 
+
+        // analyze
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(need, response.getBody());
+    }
+
+    @Test
+    public void getNeedNotFound() throws IOException {
+        // setup
+        int needId = 200;
+
+        when(dao.getNeed(needId)).thenReturn(null); // simulate a need not being found
+
+        // invoke
+        ResponseEntity<Need> response = controller.getNeed(needId); 
+
+        // analyze
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
+
+    @Test
+    public void getNeedError() throws IOException {
+        // setup
+        int needId = 200;
+
+        doThrow(new IOException()).when(dao).getNeed(needId); // simulate an error
+
+        // invoke
+        ResponseEntity<Need> response = controller.getNeed(needId); 
+
+        // analyze
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    }
 }
