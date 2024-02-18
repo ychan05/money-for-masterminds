@@ -60,5 +60,20 @@ public class CupboardController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Need> deleteNeed(@PathVariable int id) {
+        LOG.info("DELETE /cupboard/" + id);
+
+        try {
+            if (cupboardDAO.deleteNeed(id)) {
+                return new ResponseEntity<>(HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }
