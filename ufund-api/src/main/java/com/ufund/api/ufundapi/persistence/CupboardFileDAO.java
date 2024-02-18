@@ -22,7 +22,7 @@ import com.ufund.api.ufundapi.model.Need;
  * 
  * @author Yat Long Chan
  */
-public class CupboardFileDAO {
+public class CupboardFileDAO implements CupboardDAO{
     private static final Logger LOG = Logger.getLogger(CupboardFileDAO.class.getName());
     Map<Integer,Need> needs;   // Provides a local cache of the need objects
                                 // so that we don't need to read from the file
@@ -134,6 +134,16 @@ public class CupboardFileDAO {
         // Make the next id one greater than the maximum from the file
         ++nextId;
         return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Need[] findNeeds(String containsText) {
+        synchronized(needs){
+            return getNeedsArray(containsText);
+        }
     }
 
 }
