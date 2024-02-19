@@ -1,5 +1,6 @@
 package com.ufund.api.ufundapi.controller;
 
+import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties.Io;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -70,6 +71,23 @@ public class CupboardController {
                 return new ResponseEntity<>(HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity<Need[]> getCupboard() {
+        try {
+            // Retrieve needs from the cupboard
+            Need[] needs = cupboardDAO.getNeeds();
+
+            if (needs == null || needs.length == 0) {
+                return ResponseEntity.ok(new Need[0]);
+            } else {
+                return ResponseEntity.ok(needs);
             }
         } catch (IOException e) {
             LOG.log(Level.SEVERE,e.getLocalizedMessage());

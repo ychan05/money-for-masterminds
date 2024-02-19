@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.ufund.api.ufundapi.persistence.CupboardDAO;
 import com.ufund.api.ufundapi.model.Need;
@@ -91,5 +92,16 @@ public class CupboardControllerTest {
 
         // analyze
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    }
+
+    @Test
+    public void testGetCupboard() throws IOException {
+        // setup
+    }
+
+    @Test
+    public void testGetCupboardEmpty() throws IOException {
+        // setup
+        //when(controller.getNeedsArray()).thenReturn(new ArrayList<>());
     }
 }

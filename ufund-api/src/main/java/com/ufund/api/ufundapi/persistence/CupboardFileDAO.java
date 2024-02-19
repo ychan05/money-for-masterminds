@@ -187,7 +187,16 @@ public class CupboardFileDAO implements CupboardDAO {
 
     @Override
     public Need[] getNeeds() throws IOException {
-        // TODO Auto-generated method stub
-        return null;
+        synchronized(needs){
+            ArrayList<Need> needArrayList = new ArrayList<>();
+
+            for (Need need : needs.values()) {
+                needArrayList.add(need);
+            }
+    
+            Need[] needArray = new Need[needArrayList.size()];
+            needArrayList.toArray(needArray);
+            return needArray;
+        }
     }
 }
