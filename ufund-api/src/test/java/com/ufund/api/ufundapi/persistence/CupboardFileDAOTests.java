@@ -76,4 +76,17 @@ public class CupboardFileDAOTests {
         assertEquals(needs[0], testNeeds[1]);
         assertEquals(needs[1], testNeeds[3]);
     }
+
+    @Test
+    public void testGetNeeds() throws IOException {
+        // invoke
+        Need[] needs = dao.getNeeds();
+        
+        // analyze
+        assertEquals(needs.length, 4);
+        assertEquals(needs[0], testNeeds[0]);
+        assertEquals(needs[1], testNeeds[1]);
+        assertEquals(needs[2], testNeeds[2]);
+        assertEquals(needs[3], testNeeds[3]);
+    }
 }
