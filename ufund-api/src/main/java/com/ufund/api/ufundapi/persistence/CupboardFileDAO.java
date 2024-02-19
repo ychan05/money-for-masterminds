@@ -22,7 +22,7 @@ import com.ufund.api.ufundapi.model.Need;
  * 
  * @author Yat Long Chan
  */
-public class CupboardFileDAO {
+public class CupboardFileDAO implements CupboardDAO {
     private static final Logger LOG = Logger.getLogger(CupboardFileDAO.class.getName());
     Map<Integer,Need> needs;   // Provides a local cache of the need objects
                                 // so that we don't need to read from the file
@@ -136,4 +136,52 @@ public class CupboardFileDAO {
         return true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public boolean deleteNeed(int id) throws IOException {
+        synchronized(needs) {
+            if (needs.containsKey(id)) {
+                needs.remove(id);
+                return save();
+            } else {
+                return false;
+            }
+        }
+    }
+
+    @Override
+    public Need createNeed(Need need) throws IOException {
+        synchronized(needs){
+            // Create a new need object with the next unique id
+            Need newNeed = new Need(nextId(), need.getName(), need.getPrice(), need.getQuantity());
+            needs.put(newNeed.getId(), newNeed);
+            save(); // may throw an IOException
+            return newNeed;
+        }
+    }
+
+    @Override
+    public Need updateNeed(Need need) throws IOException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Need[] findNeeds(String containsText) throws IOException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Need getNeed(int id) throws IOException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Need[] getNeeds() throws IOException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }
