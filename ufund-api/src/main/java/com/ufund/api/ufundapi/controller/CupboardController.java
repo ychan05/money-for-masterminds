@@ -57,4 +57,22 @@ public class CupboardController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PutMapping("")
+    public ResponseEntity<Need> updateNeed(@RequestBody Need need) {
+        LOG.info("PUT /needs " + need);
+
+        try{
+            Need updatedNeed = cupboardDAO.getNeed(need.getId());
+            if(updatedNeed != null) {
+                cupboardDAO.updateNeed(need);
+                return new ResponseEntity<Need>(updatedNeed, HttpStatus.OK);
+            }
+            else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        catch(IOException e) {
+            LOG.log(Level.SEVERE, e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

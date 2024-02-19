@@ -60,4 +60,49 @@ public class CupboardControllerTest {
         // analyze
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
+
+    @Test
+    public void testUpdateNeed() throws IOException {
+        // setup
+        Need need = new Need(99, "Need", 29.99, 30);
+
+        when(dao.updateNeed(need)).thenReturn(need);
+        ResponseEntity<Need> response = controller.updateNeed(need);
+        need.setName("Bwahhh");
+
+        // invoke
+        response = controller.updateNeed(need);
+
+        // analyze
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(need, response.getBody());
+    }
+
+    @Test
+    public void testUpdateNeedFailed() throws IOException {
+        // setup
+        Need need = new Need(99, "Need", 29.99, 30);
+
+        when(dao.updateNeed(need)).thenReturn(null);
+
+        // invoke
+        ResponseEntity<Need> response = controller.updateNeed(need);
+
+        // analyze
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
+
+    @Test
+    public void testUpdateNeedHandleException() throws IOException {
+        // setup
+        Need need = new Need(99, "Need", 29.99, 30);
+
+        doThrow(new IOException()).when(dao).updateNeed(need);
+
+        // invoke
+        ResponseEntity<Need> response = controller.updateNeed(need);
+
+        // analyze
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    }
 }
