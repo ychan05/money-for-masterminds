@@ -78,7 +78,7 @@ public class CupboardController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/inventory")
     public ResponseEntity<Need[]> getCupboard() {
         try {
             // Retrieve needs from the cupboard
