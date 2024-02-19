@@ -68,7 +68,9 @@ public class CupboardController {
                 cupboardDAO.updateNeed(need);
                 return new ResponseEntity<Need>(updatedNeed, HttpStatus.OK);
             }
-            else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
         }
         catch(IOException e) {
             LOG.log(Level.SEVERE, e.getLocalizedMessage());
