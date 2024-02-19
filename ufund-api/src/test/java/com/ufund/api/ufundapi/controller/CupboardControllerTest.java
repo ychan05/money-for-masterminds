@@ -20,7 +20,7 @@ import org.springframework.http.ResponseEntity;
 /**
  * Test Controller for Cupboard
  * 
- * @author Yat Long Chan
+ * @author Yat Long Chan, Ben Hemmers
  */
 public class CupboardControllerTest {
     private CupboardController controller;
@@ -97,11 +97,30 @@ public class CupboardControllerTest {
     @Test
     public void testGetCupboard() throws IOException {
         // setup
+        Need[] needs = new Need[2];
+        needs[0] = new Need(99, "supersuit", 20, 1);
+        needs[1] = new Need(100, "super weapons", 40.00, 100);
+
+        // invoke
+        ResponseEntity<Need[]> response = controller.getCupboard();
+
+        // analyze
+        assertEquals(HttpStatus.OK, response.getStatusCode()); // Check for Status Code 200 (OK)
+        assertEquals(2, response.getBody().length);
+        assertEquals("supersuit", response.getBody()[0].getName());
+        assertEquals("super weapons", response.getBody()[1].getName());
     }
 
     @Test
     public void testGetCupboardEmpty() throws IOException {
         // setup
-        //when(controller.getNeedsArray()).thenReturn(new ArrayList<>());
+        when(dao.getNeeds()).thenReturn(new Need[0]);
+
+        // invoke
+        ResponseEntity<Need[]> response = controller.getCupboard();
+
+        // analyze
+        assertEquals(HttpStatus.OK, response.getStatusCode()); // Check for Status Code 200 (OK)
+        assertEquals(0, response.getBody().length);
     }
 }

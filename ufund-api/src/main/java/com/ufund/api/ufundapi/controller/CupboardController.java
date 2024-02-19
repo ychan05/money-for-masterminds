@@ -26,7 +26,7 @@ import com.ufund.api.ufundapi.model.Need;
  * {@literal @}RestController Spring annotation identifies this class as a REST API
  * method handler to the Spring framework
  * 
- * @author Yat Long Chan, Graden Olson
+ * @author Yat Long Chan, Graden Olson, Ben Hemmers
  */
 
 @RestController
@@ -84,10 +84,10 @@ public class CupboardController {
             // Retrieve needs from the cupboard
             Need[] needs = cupboardDAO.getNeeds();
 
-            if (needs == null || needs.length == 0) {
-                return ResponseEntity.ok(new Need[0]);
+            if (needs == null || needs.length == 0) { // If empty, returns empty list and OK status
+                return new ResponseEntity<Need[]>(new Need[0], HttpStatus.OK);
             } else {
-                return ResponseEntity.ok(needs);
+                return new ResponseEntity<Need[]>(needs, HttpStatus.OK);
             }
         } catch (IOException e) {
             LOG.log(Level.SEVERE,e.getLocalizedMessage());
