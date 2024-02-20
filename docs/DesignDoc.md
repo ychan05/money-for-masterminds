@@ -139,6 +139,23 @@ CupboardFileDAO: Used to interact with the file storage system and perform CRUD 
 
 **Open/Closed:** We use the open/closed principle in sprint 1 mainly in the persistence tier. By creating a CupboardDAO interface, we can easily add additional operations to the API without removing any existing code, and we can work with alternative storage systems simply by creating another implementation of the CupboardDAO interface. This also means that no code needs to be changed in the Controller tier if we were to switch to another storage system. 
 
+**Low Coupling:** We will use low coupling to limit the number of unnecessary
+relationships between classes. Working together with single responsibility, low coupling can be
+used to make sure the relationship between classes fits into that classes’ single responsibility.
+Low coupling should not be our biggest priority as long as we don’t overdo the amount of
+relationships between classes. For example, the helper does not need to be directly related to the
+checkout, instead, the funding basket can handle that relationship. Another way we could use
+low coupling is having the manager access needs not through the Need class but through the
+Cupboard class.
+
+**Information Expert:** We will use information experts to process data efficiently by
+putting those operations in the class with the attribute data. This will make operations, such as
+binary operations, easier to understand when working in certain classes. Information experts
+basically hide the more complicated looking operations in methods so that they can easily be
+repeated and easier to understand when looking over the code. We could use this in the
+Authenticator class so that operations to check the user has correctly logged in can be easily
+accessed by the user class.
+
 
 > _**[Sprint 2, 3 & 4]** Will eventually address upto **4 key OO Principles** in your final design. Follow guidance in augmenting those completed in previous Sprints as indicated to you by instructor. Be sure to include any diagrams (or clearly refer to ones elsewhere in your Tier sections above) to support your claims._
 
