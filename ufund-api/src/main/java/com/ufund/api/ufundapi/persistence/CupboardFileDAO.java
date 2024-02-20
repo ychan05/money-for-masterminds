@@ -1,3 +1,5 @@
+
+
 package com.ufund.api.ufundapi.persistence;
 
 import java.io.File;
@@ -20,7 +22,7 @@ import com.ufund.api.ufundapi.model.Need;
  * {@literal @}Component Spring annotation instantiates a single instance of this
  * class and injects the instance into other classes as needed
  * 
- * @author Yat Long Chan
+ * @author Yat Long Chan, Graden Olson, Ben Hemmers
  */
 public class CupboardFileDAO implements CupboardDAO {
     private static final Logger LOG = Logger.getLogger(CupboardFileDAO.class.getName());
@@ -151,32 +153,60 @@ public class CupboardFileDAO implements CupboardDAO {
     }
 
     @Override
-    public Need createNeed(Need hero) throws IOException {
-        // TODO Auto-generated method stub
-        return null;
+    public Need createNeed(Need need) throws IOException {
+        synchronized(needs){
+            // Create a new need object with the next unique id
+            Need newNeed = new Need(nextId(), need.getName(), need.getPrice(), need.getQuantity());
+            needs.put(newNeed.getId(), newNeed);
+            save(); // may throw an IOException
+            return newNeed;
+        }
     }
 
     @Override
     public Need updateNeed(Need need) throws IOException {
-        // TODO Auto-generated method stub
-        return null;
+        synchronized(needs){
+            if (!needs.containsKey(need.getId())){
+                return null;
+            }
+            needs.put(need.getId(), need);
+            save();
+            return need;
+        }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Need[] findNeeds(String containsText) throws IOException {
-        // TODO Auto-generated method stub
-        return null;
+    public Need[] findNeeds(String containsText) {
+        synchronized(needs){
+            return getNeedsArray(containsText);
+        }
     }
 
     @Override
     public Need getNeed(int id) throws IOException {
-        // TODO Auto-generated method stub
-        return null;
+        synchronized(needs) {
+            if (!needs.containsKey(id)) {
+                return null;
+            }
+            return needs.get(id);
+        }
     }
 
     @Override
     public Need[] getNeeds() throws IOException {
-        // TODO Auto-generated method stub
-        return null;
+        synchronized(needs){
+            ArrayList<Need> needArrayList = new ArrayList<>();
+
+            for (Need need : needs.values()) {
+                needArrayList.add(need);
+            }
+    
+            Need[] needArray = new Need[needArrayList.size()];
+            needArrayList.toArray(needArray);
+            return needArray;
+        }
     }
 }
