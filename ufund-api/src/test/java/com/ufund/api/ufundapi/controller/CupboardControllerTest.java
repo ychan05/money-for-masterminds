@@ -20,11 +20,7 @@ import org.springframework.http.ResponseEntity;
 /**
  * Test Controller for Cupboard
  * 
-<<<<<<< HEAD
- * @author Yat Long Chan, Graden Olson
-=======
- * @author Yat Long Chan, Ben Hemmers
->>>>>>> origin/get-cupboard
+ * @author Yat Long Chan, Graden Olson, Ben Hemmers
  */
 public class CupboardControllerTest {
     private CupboardController controller;
