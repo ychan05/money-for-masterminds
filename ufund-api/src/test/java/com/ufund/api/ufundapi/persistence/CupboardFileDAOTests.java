@@ -81,25 +81,6 @@ public class CupboardFileDAOTests {
     }
 
     @Test
-    public void testGetNeedNotFound() throws IOException {
-        // invoke
-        Need result = assertDoesNotThrow(() -> dao.getNeed(100), "getNeed should not throw an exception");
-        
-        // analyze
-        assertNull(result); // check that the need was not found
-    }
-
-    @Test
-    public void testGetNeed() throws IOException {
-        // invoke
-        Need result = assertDoesNotThrow(() -> dao.getNeed(1), "getNeed should not throw an exception");
-        
-        // analyze
-        assertNotNull(result); // check that the need was found
-        assertEquals(testNeeds[1], result); // check that the need is the expected need
-    }
-
-    @Test
     public void testUpdateNeed() throws IOException{
         // invoke
         Need result = assertDoesNotThrow(() -> dao.updateNeed(testNeeds[0]), "Unexpected exception thrown");
@@ -132,5 +113,24 @@ public class CupboardFileDAOTests {
         assertEquals(needs[1], testNeeds[1]);
         assertEquals(needs[2], testNeeds[2]);
         assertEquals(needs[3], testNeeds[3]);
+    }
+
+    @Test
+    public void testGetNeedNotFound() throws IOException {
+        // invoke
+        Need result = assertDoesNotThrow(() -> dao.getNeed(100), "getNeed should not throw an exception");
+        
+        // analyze
+        assertNull(result); // check that the need was not found
+    }
+
+    @Test
+    public void testGetNeed() throws IOException {
+        // invoke
+        Need result = assertDoesNotThrow(() -> dao.getNeed(1), "getNeed should not throw an exception");
+        
+        // analyze
+        assertNotNull(result); // check that the need was found
+        assertEquals(testNeeds[1], result); // check that the need is the expected need
     }
 }
