@@ -22,7 +22,11 @@ import com.ufund.api.ufundapi.model.Need;
  * {@literal @}Component Spring annotation instantiates a single instance of this
  * class and injects the instance into other classes as needed
  * 
+<<<<<<< HEAD
  * @author Yat Long Chan, Graden Olson
+=======
+ * @author Yat Long Chan, Ben Hemmers
+>>>>>>> origin/get-cupboard
  */
 public class CupboardFileDAO implements CupboardDAO {
     private static final Logger LOG = Logger.getLogger(CupboardFileDAO.class.getName());
@@ -197,7 +201,16 @@ public class CupboardFileDAO implements CupboardDAO {
 
     @Override
     public Need[] getNeeds() throws IOException {
-        // TODO Auto-generated method stub
-        return null;
+        synchronized(needs){
+            ArrayList<Need> needArrayList = new ArrayList<>();
+
+            for (Need need : needs.values()) {
+                needArrayList.add(need);
+            }
+    
+            Need[] needArray = new Need[needArrayList.size()];
+            needArrayList.toArray(needArray);
+            return needArray;
+        }
     }
 }

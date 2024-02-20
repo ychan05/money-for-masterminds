@@ -6,6 +6,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.ufund.api.ufundapi.persistence.CupboardDAO;
 import com.ufund.api.ufundapi.model.Need;
@@ -19,7 +20,11 @@ import org.springframework.http.ResponseEntity;
 /**
  * Test Controller for Cupboard
  * 
+<<<<<<< HEAD
  * @author Yat Long Chan, Graden Olson
+=======
+ * @author Yat Long Chan, Ben Hemmers
+>>>>>>> origin/get-cupboard
  */
 public class CupboardControllerTest {
     private CupboardController controller;
@@ -225,5 +230,37 @@ public class CupboardControllerTest {
 
         // analyze
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    }
+
+    @Test
+    public void testGetCupboard() throws IOException {
+        // setup
+        Need[] needs = new Need[2];
+        needs[0] = new Need(99, "supersuit", 20, 1);
+        needs[1] = new Need(100, "super weapons", 40.00, 100);
+
+        when(dao.getNeeds()).thenReturn(needs);
+
+        // invoke
+        ResponseEntity<Need[]> response = controller.getCupboard();
+
+        // analyze
+        assertEquals(HttpStatus.OK, response.getStatusCode()); // Check for Status Code 200 (OK)
+        //assertEquals(2, response.getBody().length);
+        assertEquals("supersuit", response.getBody()[0].getName());
+        assertEquals("super weapons", response.getBody()[1].getName());
+    }
+
+    @Test
+    public void testGetCupboardEmpty() throws IOException {
+        // setup
+        when(dao.getNeeds()).thenReturn(new Need[0]);
+
+        // invoke
+        ResponseEntity<Need[]> response = controller.getCupboard();
+
+        // analyze
+        assertEquals(HttpStatus.OK, response.getStatusCode()); // Check for Status Code 200 (OK)
+        assertEquals(0, response.getBody().length);
     }
 }
