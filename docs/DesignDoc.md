@@ -9,12 +9,14 @@ geometry: margin=1in
 > and appear in the generated PDF in italics but do so only **after** all team members agree that the requirements for that section and current Sprint have been met. **Do not** delete future Sprint expectations._
 
 ## Team Information
-* Team name: TEAMNAME
+* Team name: lowercase h
 * Team members
-  * MEMBER1
-  * MEMBER2
-  * MEMBER3
-  * MEMBER4
+  * Graden Olson
+  * Yat Long Chan
+  * Ben Hemmers
+  * Guancheng Liu
+  * Vincent Son
+
 
 ## Executive Summary
 
@@ -120,7 +122,7 @@ This section describes the web interface flow; this is how the user views and in
 ![Replace with your ViewModel Tier class diagram 1, etc.](model-placeholder.png)
 
 ### Model Tier
-> _**[Sprint 1]** List the classes supporting this tier and provide a description of there purpose._
+> Need - represents whatever needs to be funded to reach a goal. Has an id, name, price and quantity.
 
 > _**[Sprint 2, 3 & 4]** Provide a summary of this tier of your architecture. This
 > section will follow the same instructions that are given for the View
