@@ -34,10 +34,11 @@ public class CupboardFileDAOTests {
     @BeforeEach
     public void setup() throws IOException {
         objectMapper = mock(ObjectMapper.class);
-        testNeeds = new Need[3];
+        testNeeds = new Need[4];
         testNeeds[0] = new Need(0, "weapons", 10, 11);
         testNeeds[1] = new Need(1, "supersuit", 20, 1);
         testNeeds[2] = new Need(2, "secret lair", 30, 31);
+        testNeeds[3] = new Need(3, "super weapons", 40.00, 100);
 
         when(objectMapper
             .readValue(new File("test.txt"), Need[].class))
@@ -107,5 +108,16 @@ public class CupboardFileDAOTests {
         assertNotNull(result);
         Need actual = dao.getNeed(testNeeds[0].getId());
         assertEquals(actual, testNeeds[0]);
+    }
+
+    @Test
+    public void testFindNeeds() {
+        // invoke
+        Need[] needs = dao.findNeeds("up");
+        
+        // analyze
+        assertEquals(needs.length, 2);
+        assertEquals(needs[0], testNeeds[1]);
+        assertEquals(needs[1], testNeeds[3]);
     }
 }

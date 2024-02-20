@@ -1,3 +1,5 @@
+
+
 package com.ufund.api.ufundapi.persistence;
 
 import java.io.File;
@@ -173,10 +175,14 @@ public class CupboardFileDAO implements CupboardDAO {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Need[] findNeeds(String containsText) throws IOException {
-        // TODO Auto-generated method stub
-        return null;
+    public Need[] findNeeds(String containsText) {
+        synchronized(needs){
+            return getNeedsArray(containsText);
+        }
     }
 
     @Override

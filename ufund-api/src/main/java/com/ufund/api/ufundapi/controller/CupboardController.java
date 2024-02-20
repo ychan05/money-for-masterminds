@@ -68,6 +68,25 @@ public class CupboardController {
         }
     }
 
+    @GetMapping("/")
+    public ResponseEntity<Need[]> searchNeeds(@RequestParam String name) {
+        LOG.info("GET /needs/?name="+name);
+
+        try{
+            Need[] needs = cupboardDAO.findNeeds(name);
+            if(needs != null) {
+                return new ResponseEntity<Need[]>(needs, HttpStatus.OK);
+            }
+            else{
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        }
+        catch(IOException e){
+            LOG.log(Level.SEVERE, e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Need> deleteNeed(@PathVariable int id) {
         LOG.info("DELETE /cupboard/" + id);

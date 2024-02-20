@@ -194,4 +194,36 @@ public class CupboardControllerTest {
         // analyze
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
+
+    @Test
+    public void testSearchNeeds() throws IOException {
+        // setup
+        String searchString = "su";
+        Need[] needs = new Need[2];
+        needs[0] = new Need(99, "supersuit", 20, 1);
+        needs[1] = new Need(100, "super weapons", 40.00, 100);
+
+        when(dao.findNeeds(searchString)).thenReturn(needs);
+
+        // invoke
+        ResponseEntity<Need[]> response = controller.searchNeeds(searchString);
+
+        // analyze
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(needs, response.getBody());
+    }
+
+    @Test
+    public void testSearchNeedsHandleException() throws IOException {
+        // setup
+        String searchString = "woah";
+
+        doThrow(new IOException()).when(dao).findNeeds(searchString);
+
+        // invoke
+        ResponseEntity<Need[]> response = controller.searchNeeds(searchString);
+
+        // analyze
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    }
 }
