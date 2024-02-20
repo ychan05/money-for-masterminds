@@ -53,7 +53,7 @@ public class CupboardController {
      */
     @PostMapping("")
     public ResponseEntity<Need> createNeed(@RequestBody Need need) {
-        LOG.info("POST /needs " + need);
+        LOG.info("POST /cupboard/ " + need);
 
         try{
             Need newNeed = cupboardDAO.createNeed(need);
@@ -86,10 +86,10 @@ public class CupboardController {
 
     @PutMapping("")
     public ResponseEntity<Need> updateNeed(@RequestBody Need need) {
-        LOG.info("PUT /needs " + need);
+        LOG.info("PUT /cupboard/ " + need);
 
         try{
-            Need updatedNeed = cupboardDAO.getNeed(need.getId());
+            Need updatedNeed = cupboardDAO.updateNeed(need);
             if(updatedNeed != null) {
                 cupboardDAO.updateNeed(need);
                 return new ResponseEntity<Need>(updatedNeed, HttpStatus.OK);
