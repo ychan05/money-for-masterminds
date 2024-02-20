@@ -181,8 +181,12 @@ public class CupboardFileDAO implements CupboardDAO {
 
     @Override
     public Need getNeed(int id) throws IOException {
-        // TODO Auto-generated method stub
-        return null;
+        synchronized(needs) {
+            if (!needs.containsKey(id)) {
+                return null;
+            }
+            return needs.get(id);
+        }
     }
 
     @Override

@@ -19,7 +19,7 @@ import org.springframework.http.ResponseEntity;
 /**
  * Test Controller for Cupboard
  * 
- * @author Yat Long Chan
+ * @author Yat Long Chan, Graden Olson
  */
 public class CupboardControllerTest {
     private CupboardController controller;
@@ -62,14 +62,103 @@ public class CupboardControllerTest {
     }
 
     @Test
+    public void testCreateNeed() throws IOException{
+        // setup
+        Need need = new Need(1, "need", 6.00, 345);
+
+        // simulate success
+        when(dao.createNeed(need)).thenReturn(need);
+
+        // invoke
+        ResponseEntity<Need> response = controller.createNeed(need);
+
+        // analyze
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(need, response.getBody());
+    }
+
+    @Test
+    public void testCreateNeedFailed() throws IOException{
+        // setup
+        Need need = new Need(1, "need", 6.00, 345);
+
+        // simulate failure
+        when(dao.createNeed(need)).thenReturn(null);
+
+        // invoke
+        ResponseEntity<Need> response = controller.createNeed(need);
+
+        // analyze
+        assertEquals(HttpStatus.CONFLICT, response.getStatusCode());
+    }
+
+    @Test
+    public void testCreateNeedHandleException() throws IOException {
+        // setup
+        Need need = new Need(1, "need", 6.00, 345);
+
+        // simulate IOException
+        doThrow(new IOException()).when(dao).createNeed(need);
+
+        // invoke
+        ResponseEntity<Need> response = controller.createNeed(need);
+
+        // analyze
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    }
+
+    @Test
+    public void getNeed() throws IOException {
+        // setup
+        Need need = new Need(1, "nuke", 100, 1);
+
+        when(dao.getNeed(need.getId())).thenReturn(need); // simulate a need successfully being found
+        
+        // invoke
+        ResponseEntity<Need> response = controller.getNeed(need.getId()); 
+
+        // analyze
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(need, response.getBody());
+    }
+
+    @Test
+    public void getNeedNotFound() throws IOException {
+        // setup
+        int needId = 200;
+
+        when(dao.getNeed(needId)).thenReturn(null); // simulate a need not being found
+
+        // invoke
+        ResponseEntity<Need> response = controller.getNeed(needId); 
+
+        // analyze
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
+
+    @Test
+    public void getNeedError() throws IOException {
+        // setup
+        int needId = 200;
+
+        doThrow(new IOException()).when(dao).getNeed(needId); // simulate an error
+
+        // invoke
+        ResponseEntity<Need> response = controller.getNeed(needId); 
+
+        // analyze
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    }
+
+    @Test
     public void testUpdateNeed() throws IOException {
         // setup
-        Need need = new Need(99, "Need", 29.99, 30);
+        Need need = new Need(0, "What", 39.99, 30);
 
         when(dao.updateNeed(need)).thenReturn(need);
         ResponseEntity<Need> response = controller.updateNeed(need);
-        need.setName("Bwahhh");
-
+        need.setName("Waaaaaah");
+        
         // invoke
         response = controller.updateNeed(need);
 
@@ -81,7 +170,7 @@ public class CupboardControllerTest {
     @Test
     public void testUpdateNeedFailed() throws IOException {
         // setup
-        Need need = new Need(99, "Need", 29.99, 30);
+        Need need = new Need("Need", 29.99, 30);
 
         when(dao.updateNeed(need)).thenReturn(null);
 

@@ -25,7 +25,7 @@ import com.ufund.api.ufundapi.model.Need;
  * {@literal @}RestController Spring annotation identifies this class as a REST API
  * method handler to the Spring framework
  * 
- * @author Yat Long Chan
+ * @author Yat Long Chan, Graden Olson
  */
 
 @RestController
@@ -40,6 +40,32 @@ public class CupboardController {
      */
     public CupboardController(CupboardDAO cupboardDAO) {
         this.cupboardDAO = cupboardDAO;
+    }
+
+    /**
+     * Creates a {@linkplain Need need} with the provided need object
+     * 
+     * @param need
+     * 
+     * @return ResponseEntity with created {@link Need need} object and Http status of CREATED<br>
+     * ResponseEntity with HTTP status of CONFLICT if {@link Need need} object already exists<br>
+     * Response Entity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
+    @PostMapping("")
+    public ResponseEntity<Need> createNeed(@RequestBody Need need) {
+        LOG.info("POST /needs " + need);
+
+        try{
+            Need newNeed = cupboardDAO.createNeed(need);
+            if(newNeed == null){
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
+            }
+            else return new ResponseEntity<Need>(newNeed, HttpStatus.CREATED);
+        }
+        catch(IOException e){
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/{id}")
@@ -74,6 +100,23 @@ public class CupboardController {
         }
         catch(IOException e) {
             LOG.log(Level.SEVERE, e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Need> getNeed(@PathVariable int id) {
+        LOG.info("GET /cupboard/" + id);
+
+        try {
+            Need need = cupboardDAO.getNeed(id);
+            if (need != null) {
+                return new ResponseEntity<>(need, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

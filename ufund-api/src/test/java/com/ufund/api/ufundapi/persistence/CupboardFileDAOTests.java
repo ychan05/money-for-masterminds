@@ -64,4 +64,48 @@ public class CupboardFileDAOTests {
         assertEquals(true, result); // check that the delete was successful
         assertEquals(testNeeds.length - 1, dao.needs.size()); // check that the size of the needs map has decreased
     }
+
+    @Test
+    public void testCreateNeed() throws IOException {
+        // invoke
+        Need result = assertDoesNotThrow(() -> dao.createNeed(testNeeds[0]), "Unexpected exception thrown");
+
+        // analyze
+        assertNotNull(result);
+        Need actual = dao.getNeed(testNeeds[0].getId());
+        assertEquals(actual.getId(), testNeeds[0].getId());
+        assertEquals(actual.getName(), testNeeds[0].getName());
+        assertEquals(actual.getPrice(), testNeeds[0].getPrice());
+        assertEquals(actual.getQuantity(), testNeeds[0].getQuantity());
+    }
+
+    @Test
+    public void testGetNeedNotFound() throws IOException {
+        // invoke
+        Need result = assertDoesNotThrow(() -> dao.getNeed(100), "getNeed should not throw an exception");
+        
+        // analyze
+        assertNull(result); // check that the need was not found
+    }
+
+    @Test
+    public void testGetNeed() throws IOException {
+        // invoke
+        Need result = assertDoesNotThrow(() -> dao.getNeed(1), "getNeed should not throw an exception");
+        
+        // analyze
+        assertNotNull(result); // check that the need was found
+        assertEquals(testNeeds[1], result); // check that the need is the expected need
+    }
+
+    @Test
+    public void testUpdateNeed() throws IOException{
+        // invoke
+        Need result = assertDoesNotThrow(() -> dao.updateNeed(testNeeds[0]), "Unexpected exception thrown");
+
+        // analyze
+        assertNotNull(result);
+        Need actual = dao.getNeed(testNeeds[0].getId());
+        assertEquals(actual, testNeeds[0]);
+    }
 }
