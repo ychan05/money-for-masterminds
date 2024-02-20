@@ -9,12 +9,13 @@ geometry: margin=1in
 > and appear in the generated PDF in italics but do so only **after** all team members agree that the requirements for that section and current Sprint have been met. **Do not** delete future Sprint expectations._
 
 ## Team Information
-* Team name: TEAMNAME
+* Team name: lowercase_h
 * Team members
-  * MEMBER1
-  * MEMBER2
-  * MEMBER3
-  * MEMBER4
+  * Yat Long Chan
+  * Graden Olson
+  * Ben Hemmers
+  * Vincent Son
+  * Guangcheng Liu
 
 ## Executive Summary
 
@@ -54,7 +55,7 @@ This section describes the features of the application.
 
 This section describes the application domain.
 
-![Domain Model](domain-model-placeholder.png)
+![Domain Model](domain-model.png)
 
 > _**[Sprint 2 & 4]** Provide a high-level overview of the domain for this application. You
 > can discuss the more important domain entities and their relationship
