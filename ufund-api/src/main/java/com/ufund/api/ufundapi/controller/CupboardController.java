@@ -143,6 +143,7 @@ public class CupboardController {
 
     @GetMapping("/inventory")
     public ResponseEntity<Need[]> getCupboard() {
+        LOG.info("GET /cupboard/inventory");
         try {
             // Retrieve needs from the cupboard
             Need[] needs = cupboardDAO.getNeeds();
