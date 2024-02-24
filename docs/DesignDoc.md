@@ -156,6 +156,13 @@ repeated and easier to understand when looking over the code. We could use this 
 Authenticator class so that operations to check the user has correctly logged in can be easily
 accessed by the user class.
 
+**Dependency Inversion/Injection:** We focus on creating a layer of abstraction between high and low level modules. With these implementation, we do not need to directly couple between the modules. Instead, we will inject low level modules into high level modules to form loose coupling. We can implement this approach on a Cupboard controller that will interact with the interface CupBoardDAO instead of CupboardFileDAO to minimize tight coupling.
+
+
+**Law of Demeter:** We aim to minimize the direct coupling between objects or classes where it is deemed unnecessary. Instead, we opt for the use of intermediaries that already possess established couplings to exchange data. This approach serves to restrict the influence one class has on another, such as when a class may need to change. By doing so, the impact of modifications becomes localized 
+to the immediate coupling, enhancing the maintainability and flexibility of the system. For example, the CupboardDAO exhibits a direct coupling with the Need class. To access the Need class, we follow the route through CupboardDAO, ensuring a more controlled and encapsulated interaction between these components.
+
+
 **Pure Fabrication:** Pure fabrication is a term for not real objects, nor is it something special. It is similar to abstractions such as facades, or a proxy. They aren’t necessarily tied to the domain or the problem its solving, but it serves as a helper or a connector between classes. This helps make low coupling and high cohesion a success by providing external systems to aid complex operations.
 
 **The Controller:** The controllerprinciple is saying that the thing responsible for handling system operations should be a separate class. They are like a mediator between the user interface and logic which increase the flow of information. It is a non-user interface responsible to receive or handle an event.
