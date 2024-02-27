@@ -12,6 +12,7 @@ import { MessageService } from '../message.service';
 })
 export class CupboardComponent {
   constructor(private needService: NeedService, private messageService: MessageService) {}
+  needs: Need[] = [];
 
   getNeeds(): void {
     this.needService.getNeeds()
@@ -22,11 +23,18 @@ export class CupboardComponent {
     this.getNeeds();
   }
 
-  needs: Need[] = [];
-  selectedNeed?: Need;
-
-  onSelect(need: Need): void {
-    this.selectedNeed = need;
-    this.messageService.add(`CupboardComponent: Selected need id=${need.id}`);
+  add (name: string, price: number, quantity: number): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.needService.addNeed({ name, price, quantity } as Need)
+      .subscribe(need => {
+        this.needs.push(need);
+      });
   }
+
+  delete(need: Need): void {
+    this.needs = this.needs.filter(n => n !== need);
+    this.needService.deleteNeed(need.id).subscribe();
+  }
+
 }
