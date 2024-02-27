@@ -8,7 +8,7 @@ describe('CupboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CupboardComponent]
+      declarations: [CupboardComponent]
     })
     .compileComponents();
     

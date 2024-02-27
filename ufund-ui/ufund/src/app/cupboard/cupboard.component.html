@@ -1,1 +1,24 @@
-<p>cupboard works!</p>
+<h2>My Needs</h2>
+<ul class="cupboard">
+  <li *ngFor="let need of needs">
+    <button [class.selected]="need === selectedNeed" type="button" (click)="onSelect(need)">
+      <span class="badge">{{need.id}}</span>
+      <span class="name">{{need.name}}</span>
+    </button>
+  </li>
+</ul>
+
+<div *ngIf="selectedNeed">
+  <h2>{{selectedNeed.name | uppercase}} Details</h2>
+  <div>id: {{selectedNeed.id}}</div>
+  <div>
+    <label for="need-name">Need name: </label>
+    <input id="need-name" [(ngModel)]="selectedNeed.name" placeholder="name">
+    <br>
+    <label for="need-price">Need price:</label>
+    <input id="need-price" [(ngModel)]="selectedNeed.price" placeholder="price">
+    <br>
+    <label for="need-quantity">Need quantity: </label>
+    <input id="need-quantity" [(ngModel)]="selectedNeed.quantity" placeholder="quantity">
+  </div>
+</div>
