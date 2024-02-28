@@ -158,6 +158,14 @@ public class CupboardFileDAO implements CupboardDAO {
         synchronized(needs){
             // Create a new need object with the next unique id
             Need newNeed = new Need(nextId(), need.getName(), need.getPrice(), need.getQuantity());
+
+            // if need with name already exists, return null
+            for (Need n : needs.values()) {
+                if (n.getName().equals(newNeed.getName())) {
+                    return null;
+                }
+            }
+            
             needs.put(newNeed.getId(), newNeed);
             save(); // may throw an IOException
             return newNeed;

@@ -9,6 +9,7 @@ import { NeedDetailComponent } from './need-detail/need-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NeedSearchComponent } from './need-search/need-search.component';
+import { NeedFormComponent } from './need-form/need-form.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NeedSearchComponent } from './need-search/need-search.component';
     MessagesComponent,
     DashboardComponent,
     NeedSearchComponent,
+    NeedFormComponent,
   ],
   imports: [
     BrowserModule,
