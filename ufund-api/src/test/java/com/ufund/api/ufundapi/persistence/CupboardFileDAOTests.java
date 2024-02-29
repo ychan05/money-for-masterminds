@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests the CupboardFileDAO class
  * 
- * @author Yat Long Chan, Graden Olson
+ * @author Yat Long Chan, Graden Olson, Ben Hemmers
  */
 @Tag("persistence")
 public class CupboardFileDAOTests {
