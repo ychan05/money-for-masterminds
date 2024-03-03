@@ -5,11 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-/**
- * The unit test suite for the Hero class
- * 
- * @author Graden Olson
- */
 @Tag("Model-tier")
 public class NeedTest {
     @Test

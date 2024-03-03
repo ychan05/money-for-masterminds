@@ -51,4 +51,9 @@ public class User {
      * @param need The need being added to the funding basket
      */
     public void addToBasket(Need need){basket.add(need);}
+
+    @Override
+    public String toString() {
+        return String.format(STRING_FORMAT, username);
+    }
 }
