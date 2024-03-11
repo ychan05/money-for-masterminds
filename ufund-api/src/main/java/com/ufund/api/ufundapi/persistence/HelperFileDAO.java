@@ -45,7 +45,7 @@ public class HelperFileDAO implements HelperDAO {
     /**
      * Saves the Helper Users into the file as an array of JSON objects
      * 
-     * @return true if the Helper Users were written successfully
+     * @return true if the Helpers were written successfully
      * 
      * @throws IOException when file cannot be accessed or written to
      */
@@ -56,7 +56,7 @@ public class HelperFileDAO implements HelperDAO {
     }
 
     /**
-     * Loads Helper Users from the JSON file into the set
+     * Loads Helpers from the JSON file into the set
      * 
      * @return true if the file was read successfully
      * 
@@ -78,6 +78,4 @@ public class HelperFileDAO implements HelperDAO {
         }
         return null;
     }
-
-    // Add more methods as needed for Helper User management
 }
