@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ufund.api.ufundapi.model.Need;
 import com.ufund.api.ufundapi.model.User;
 import com.ufund.api.ufundapi.persistence.CupboardDAO;
+import com.ufund.api.ufundapi.persistence.HelperDAO;
 
 import java.io.IOException;
 import java.util.Set;
@@ -28,7 +29,7 @@ import java.util.logging.Logger;
  * {@literal @}RestController Spring annotation identifies this class as a REST API
  * method handler to the Spring framework
  * 
- * @author Ben Hemmers
+ * @author Benjamin Hemmers
  */
 
  @RestController
@@ -39,7 +40,6 @@ public class HelperController {
 
     /**
      * Creates a REST API Controller to respond to requests for the Helper resource
-     * 
      */
     public HelperController(HelperDAO helperDAO) {
         this.helperDAO = helperDAO;
@@ -47,17 +47,12 @@ public class HelperController {
     
     @GetMapping("/basket")
     public ResponseEntity<Set<Need>> viewFundingBasket(@RequestParam("user") User user) {
-        LOG.info("GET /basket");
+        LOG.info("GET /helper/basket");
 
-        try {
-            // Retrieve the funding basket for the specified user
-            Set<Need> fundingBasket = user.getBasket();
+        // Retrieve the funding basket for the specified user
+        Set<Need> fundingBasket = user.getBasket();
 
-            // Return the funding basket as a response
-            return new ResponseEntity<Set<Need>>(fundingBasket, HttpStatus.OK);
-        } catch (IOException e) {
-            LOG.log(Level.SEVERE,e.getLocalizedMessage());
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        // Return the funding basket as a response
+        return new ResponseEntity<Set<Need>>(fundingBasket, HttpStatus.OK);
     }
 }
