@@ -19,4 +19,12 @@ public interface HelperDAO {
      * @throws IOException if an issue with underlying storage
      */
     Set<Need> getFundingBasket(User user) throws IOException;
+
+    /**
+     * Retrieves user by username
+     * @param username The username of the user
+     * @return The user object
+     * @throws IOException if an issue with underlying storage
+     */
+    User getUser(String username) throws IOException;
 }

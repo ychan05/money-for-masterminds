@@ -36,7 +36,7 @@ public class HelperFileDAO implements HelperDAO {
      * 
      * @throws IOException when file cannot be accessed or read from
      */
-    public HelperFileDAO(@Value("${helper.file}") String filename, ObjectMapper objectMapper) throws IOException {
+    public HelperFileDAO(@Value("${authenticator.file}") String filename, ObjectMapper objectMapper) throws IOException {
         this.filename = filename;
         this.objectMapper = objectMapper;
         load(); // Load the Helper Users from the file
@@ -75,6 +75,16 @@ public class HelperFileDAO implements HelperDAO {
     public Set<Need> getFundingBasket(User user) throws IOException {
         if (user != null) {
             return user.getBasket();
+        }
+        return null;
+    }
+
+    @Override
+    public User getUser(String username) throws IOException {
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                return user;
+            }
         }
         return null;
     }

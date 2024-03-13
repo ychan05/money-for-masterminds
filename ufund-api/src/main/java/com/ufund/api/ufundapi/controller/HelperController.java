@@ -45,14 +45,21 @@ public class HelperController {
         this.helperDAO = helperDAO;
     }
     
-    @GetMapping("/basket")
-    public ResponseEntity<Set<Need>> viewFundingBasket(@RequestParam("user") User user) {
+    @GetMapping("/{username}/basket")
+    public ResponseEntity<?> getFundingBasket(@PathVariable String username) {
         LOG.info("GET /helper/basket");
 
-        // Retrieve the funding basket for the specified user
-        Set<Need> fundingBasket = user.getBasket();
+        try {
+            // Get the user by username
+            User user = helperDAO.getUser(username);
 
-        // Return the funding basket as a response
-        return new ResponseEntity<Set<Need>>(fundingBasket, HttpStatus.OK);
+            // Get the funding basket for the given user
+            Set<Need> fundingBasket = helperDAO.getFundingBasket(user);
+
+            // Return the funding basket as a response
+            return ResponseEntity.ok(fundingBasket);
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while getting funding basket");
+        }
     }
 }
