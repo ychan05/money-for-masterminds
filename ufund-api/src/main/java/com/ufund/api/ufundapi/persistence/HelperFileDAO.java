@@ -137,4 +137,16 @@ public class HelperFileDAO implements HelperDAO {
             save();
         }
     }
+
+    @Override
+    public Need getNeedFromBasket(User user, int needId) throws IOException {
+        if (user != null) {
+            for (Need need : user.getBasket()) {
+                if (need.getId() == needId) {
+                    return need;
+                }
+            }
+        }
+        return null;
+    }
 }

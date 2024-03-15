@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.ufund.api.ufundapi.persistence.CupboardDAO;
 import com.ufund.api.ufundapi.persistence.HelperDAO;
 import com.ufund.api.ufundapi.model.Need;
 import com.ufund.api.ufundapi.model.User;
@@ -29,11 +30,13 @@ import org.springframework.http.ResponseEntity;
 public class HelperControllerTest {
     private HelperController controller;
     private HelperDAO dao;
+    private CupboardDAO cupboardDAO;
     
     @BeforeEach
     public void setup() {
         dao = mock(HelperDAO.class); // simulate the DAO
-        controller = new HelperController(dao);
+        cupboardDAO = mock(CupboardDAO.class);
+        controller = new HelperController(dao, cupboardDAO);
     }
 
     @Test
@@ -46,6 +49,32 @@ public class HelperControllerTest {
         
         // invoke
         ResponseEntity<?> response = controller.getFundingBasket(user.getUsername());
+
+        // analyze
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+
+    @Test
+    public void testAddToFundingBasket() throws IOException {
+        // setup
+        User user = new User("testUser");
+        Need need = new Need(1, "test", 10, 10);
+        
+        // simulate success
+        ResponseEntity<?> response = controller.addToFundingBasket(user.getUsername(), 1);
+
+        // analyze
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+
+    @Test
+    public void testRemoveFromFundingBasket() throws IOException {
+        // setup
+        User user = new User("testUser");
+        Need need = new Need(1, "test", 10, 10);
+        
+        // simulate success
+        ResponseEntity<?> response = controller.removeFromFundingBasket(user.getUsername(), 1);
 
         // analyze
         assertEquals(HttpStatus.OK, response.getStatusCode());

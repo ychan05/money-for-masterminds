@@ -45,4 +45,13 @@ public interface HelperDAO {
      * @throws IOException if an issue with underlying storage
      */
     void removeNeedFromBasket(User user, Need need) throws IOException;
+
+    /**
+     * Retrieve need from the funding basket of the specified Helper User
+     * @param user The Helper User
+     * @param needId The id of the need to retrieve
+     * @return The need object
+     * @throws IOException if an issue with underlying storage
+     */
+    Need getNeedFromBasket(User user, int needId) throws IOException;
 }

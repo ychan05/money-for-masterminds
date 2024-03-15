@@ -37,14 +37,17 @@ import java.util.logging.Logger;
 public class HelperController {
     private static final Logger LOG = Logger.getLogger(CupboardController.class.getName());
     private HelperDAO helperDAO;
+    private CupboardDAO cupboardDAO; // Used to access the cupboard
 
     /**
      * Creates a REST API Controller to respond to requests for the Helper resource
      */
-    public HelperController(HelperDAO helperDAO) {
+    public HelperController(HelperDAO helperDAO, CupboardDAO cupboardDAO) {
         this.helperDAO = helperDAO;
+        this.cupboardDAO = cupboardDAO;
     }
     
+
     @GetMapping("/{username}/basket")
     public ResponseEntity<?> getFundingBasket(@PathVariable String username) {
         LOG.info("GET /helper/basket");
@@ -60,6 +63,48 @@ public class HelperController {
             return ResponseEntity.ok(fundingBasket);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while getting funding basket");
+        }
+    }
+
+    @DeleteMapping("/{username}/basket/{needId}")
+    public ResponseEntity<?> removeFromFundingBasket(@PathVariable String username, @PathVariable int needId) {
+        LOG.info("DELETE /helper/basket/" + needId);
+
+        try {
+            // Get the user by username
+            User user = helperDAO.getUser(username);
+
+            // Get the need by needId
+            Need need = helperDAO.getNeedFromBasket(user, needId);
+
+            // Remove the need from the funding basket
+            helperDAO.removeNeedFromBasket(user, need);
+
+            // Return a response with HTTP status of OK
+            return ResponseEntity.ok().build();
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while removing need from funding basket");
+        }
+    }
+
+    @PostMapping("/{username}/basket/{needId}")
+    public ResponseEntity<?> addToFundingBasket(@PathVariable String username, @PathVariable int needId) {
+        LOG.info("POST /helper/basket/" + needId);
+
+        try {
+            // Get the user by username
+            User user = helperDAO.getUser(username);
+
+            // Get the need from the cupboard by needId
+            Need need = cupboardDAO.getNeed(needId);
+
+            // Add the need to the funding basket
+            helperDAO.addNeedToBasket(user, need);
+
+            // Return a response with HTTP status of OK
+            return ResponseEntity.ok().build();
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while adding need to funding basket");
         }
     }
 }
