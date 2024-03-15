@@ -2,7 +2,11 @@ package com.ufund.api.ufundapi.persistence;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.logging.Logger;
 
@@ -24,7 +28,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class HelperFileDAO implements HelperDAO {
     private static final Logger LOG = Logger.getLogger(HelperFileDAO.class.getName());
-    private Set<User> users; // Provides a local cache of the Helper Users
+    Map<String, User> users;    // Provides a local cache of the user objects
     private ObjectMapper objectMapper; // Provides conversion between User objects and JSON text format written to the file
     private String filename; // Filename to read from and write to
 
@@ -42,6 +46,24 @@ public class HelperFileDAO implements HelperDAO {
         load(); // Load the Helper Users from the file
     }
 
+    private User[] getUsersArray() {
+        return getUsersArray(null);
+    }
+
+    private User[] getUsersArray(String containsText) { // if containsText == null, no filter
+        ArrayList<User> userArrayList = new ArrayList<>();
+
+        for (User user : users.values()) {
+            if (containsText == null || user.getUsername().contains(containsText)) {
+                userArrayList.add(user);
+            }
+        }
+
+        User[] userArray = new User[userArrayList.size()];
+        userArrayList.toArray(userArray);
+        return userArray;
+    }
+
     /**
      * Saves the Helper Users into the file as an array of JSON objects
      * 
@@ -50,8 +72,12 @@ public class HelperFileDAO implements HelperDAO {
      * @throws IOException when file cannot be accessed or written to
      */
     private boolean save() throws IOException {
+        User[] userArray = getUsersArray();
+
         // Serializes the Java Objects to JSON objects into the file
-        objectMapper.writeValue(new File(filename), users);
+        // writeValue will thrown an IOException if there is an issue
+        // with the file or reading from the file
+        objectMapper.writeValue(new File(filename),userArray);
         return true;
     }
 
@@ -63,10 +89,17 @@ public class HelperFileDAO implements HelperDAO {
      * @throws IOException when file cannot be accessed or read from
      */
     private boolean load() throws IOException {
-        users = new TreeSet<>();
+        users = new TreeMap<>();
 
-        // Deserializes the JSON objects from the file into a set of Helper Users
-        users = objectMapper.readValue(new File(filename), objectMapper.getTypeFactory().constructCollectionType(Set.class, User.class));
+        // Deserializes the JSON objects from the file into an array of users
+        // readValue will throw an IOException if there's an issue with the file
+        // or reading from the file
+        User[] userArray = objectMapper.readValue(new File(filename),User[].class);
+
+        // Add each user to the tree map
+        for (User user : userArray) {
+            users.put(user.getUsername(), user);
+        }
 
         return true;
     }
@@ -81,11 +114,27 @@ public class HelperFileDAO implements HelperDAO {
 
     @Override
     public User getUser(String username) throws IOException {
-        for (User user : users) {
+        for (User user : users.values()) {
             if (user.getUsername().equals(username)) {
                 return user;
             }
         }
         return null;
+    }
+
+    @Override
+    public void addNeedToBasket(User user, Need need) throws IOException {
+        if (user != null) {
+            user.addToBasket(need);
+            save();
+        }
+    }
+
+    @Override
+    public void removeNeedFromBasket(User user, Need need) throws IOException {
+        if (user != null) {
+            user.removeFromBasket(need);
+            save();
+        }
     }
 }

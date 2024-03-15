@@ -27,4 +27,22 @@ public interface HelperDAO {
      * @throws IOException if an issue with underlying storage
      */
     User getUser(String username) throws IOException;
+
+    /**
+     * Adds a need to the funding basket of the specified Helper User
+     * 
+     * @param user The Helper User
+     * @param need The Need to add to the funding basket
+     * @throws IOException if an issue with underlying storage
+     */
+    void addNeedToBasket(User user, Need need) throws IOException;
+
+    /**
+     * Removes a need from the funding basket of the specified Helper User
+     * 
+     * @param user The Helper User
+     * @param need The Need to remove from the funding basket
+     * @throws IOException if an issue with underlying storage
+     */
+    void removeNeedFromBasket(User user, Need need) throws IOException;
 }
