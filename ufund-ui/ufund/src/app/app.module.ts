@@ -10,6 +10,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NeedSearchComponent } from './need-search/need-search.component';
 import { NeedFormComponent } from './need-form/need-form.component';
+import { FundingBasketComponent } from './funding-basket/funding-basket.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NeedFormComponent } from './need-form/need-form.component';
     DashboardComponent,
     NeedSearchComponent,
     NeedFormComponent,
+    FundingBasketComponent,
   ],
   imports: [
     BrowserModule,
