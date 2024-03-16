@@ -1,0 +1,9 @@
+<h2>My Funding basket</h2>
+
+<ul class="funding-basket">
+  <li *ngFor="let need of fundingBasket">
+    <a routerLink="/detail/{{need.id}}">
+      <span class="badge">{{need.id}}</span> {{need.name}}
+    </a>
+  </li>
+</ul>

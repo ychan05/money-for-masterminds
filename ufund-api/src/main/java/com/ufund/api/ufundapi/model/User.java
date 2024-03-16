@@ -52,6 +52,12 @@ public class User {
      */
     public void addToBasket(Need need){basket.add(need);}
 
+    /**
+     * Removes a need from the funding basket
+     * @param need The need being removed from the funding basket
+     */
+    public void removeFromBasket(Need need){basket.remove(need);}
+
     @Override
     public String toString() {
         return String.format(STRING_FORMAT, username);

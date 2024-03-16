@@ -5,16 +5,14 @@ import { CupboardComponent } from './cupboard/cupboard.component';
 import { DashboardComponent } from './helper/dashboard/dashboard.component';
 import { NeedDetailComponent } from './need-detail/need-detail.component';
 import { LoginComponent } from './login/login.component';
-import { HelperComponent } from './helper/helper.component';
-import { ManagerComponent } from './manager/manager.component';
+import { FundingBasketComponent } from './funding-basket/funding-basket.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'detail/:id', component: NeedDetailComponent},
   { path: 'cupboard', component: CupboardComponent},
-  { path: 'helper', component: HelperComponent},
-  { path: 'manager', component: ManagerComponent}
+  { path: 'funding-basket', component: FundingBasketComponent}
 ];
 
 @NgModule({
