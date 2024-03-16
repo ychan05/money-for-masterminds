@@ -7,9 +7,12 @@ import { CupboardComponent } from './cupboard/cupboard.component';
 import { FormsModule, NgModel } from '@angular/forms';
 import { NeedDetailComponent } from './need-detail/need-detail.component';
 import { MessagesComponent } from './messages/messages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './helper/dashboard/dashboard.component';
 import { NeedSearchComponent } from './need-search/need-search.component';
 import { NeedFormComponent } from './need-form/need-form.component';
+import { LoginComponent } from './login/login.component';
+import { HelperComponent } from './helper/helper.component';
+import { ManagerComponent } from './manager/manager.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,8 @@ import { NeedFormComponent } from './need-form/need-form.component';
     DashboardComponent,
     NeedSearchComponent,
     NeedFormComponent,
+    HelperComponent,
+    ManagerComponent,
   ],
   imports: [
     BrowserModule,
