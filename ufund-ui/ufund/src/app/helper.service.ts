@@ -34,6 +34,26 @@ export class HelperService {
       );
   }
 
+  /** POST: add a new need to the funding-basket */
+  addToFundingBasket(username: string, needId: number): Observable<Need> {
+    const url = `${this.helperUrl}/${username}/basket/${needId}`;
+
+    return this.http.post<Need>(url, this.httpOptions).pipe(
+      tap((newNeed: Need) => this.log(`added need w/ id=${newNeed.id}`)),
+      catchError(this.handleError<Need>('addToFundingBasket'))
+    );
+  }
+
+  /** DELETE: remove a need from the funding-basket */
+  removeFromFundingBasket(username: string, needId: number): Observable<Need> {
+    const url = `${this.helperUrl}/${username}/basket/${needId}`;
+
+    return this.http.delete<Need>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`removed need id=${needId}`)),
+      catchError(this.handleError<Need>('removeFromFundingBasket'))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
