@@ -4,17 +4,17 @@
             <h2>Login</h2>
             <form action = "#">
                 <div class = "input-box">
-                    <input type="username" [(ngModel)]="loginObj.username" name="Username" required>
+                    <input type="username" [(ngModel)]="username" name="Username" required>
                     <label>Username</label>
                 </div>
-                <button type="submit" class="btn" (click)="onLogin()">Login</button>
+                <button type="submit" class="btn" (click)="onLogIn(username)">Login</button>
             </form>
             <form>
                 <div class = "signup-box">
-                    <input type="username2" [(ngModel)]="loginObj.username" name="Username2" required>
+                    <input type="username2" [(ngModel)]="newUser.username" name="Username2" required>
                     <label>Username</label>
                 </div>
-                <button type="submit" class="btn" (click)="onSignin()">Sign In</button>
+                <button type="submit" class="btn" (click)="onSignIn(newUser.username)">Sign In</button>
             </form>
         </div>
     </div>
