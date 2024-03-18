@@ -14,7 +14,7 @@ import { Login, UserService } from '../user.service';
 export class LoginComponent {
   username: string;
   newUser: Login;
-  constructor(private userService: UserService){
+  constructor(public userService: UserService){
     this.newUser = new Login();
     this.username = "";
   }

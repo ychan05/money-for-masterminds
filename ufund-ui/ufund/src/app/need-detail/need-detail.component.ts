@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Need } from '../need';
 import { NeedService } from '../need.service';
+import { UserService } from '../user.service';
+import { HelperService } from '../helper.service';
 
 @Component({
   selector: 'app-need-detail',
@@ -11,13 +13,18 @@ import { NeedService } from '../need.service';
   styleUrl: './need-detail.component.css'
 })
 export class NeedDetailComponent {
+  username: string = '';
+
   constructor(
     private route: ActivatedRoute,
     private needService: NeedService,
-    private location: Location
+    private location: Location,
+    public userService: UserService,
+    public helperService: HelperService
   ) {}
 
   ngOnInit(): void {
+    this.username = this.userService.loginObj.username;
     this.getNeed();
   }
 
@@ -36,6 +43,10 @@ export class NeedDetailComponent {
       this.needService.updateNeed(this.need)
         .subscribe(() => this.goBack());
     }
+  }
+
+  addToFundingBasket(username: string, needId: number): void {
+    this.helperService.addToFundingBasket(username, needId).subscribe();
   }
 
   @Input() need?: Need;

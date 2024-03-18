@@ -18,7 +18,7 @@ export class NavigationComponent {
       console.log(this.links);
     }
     else{
-      this.links.push("/dashboard", "/funding-basket")
+      this.links.push("/dashboard", "/funding-basket", "/cupboard")
       console.log(this.links);
     }
   }

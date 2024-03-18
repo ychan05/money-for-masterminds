@@ -1,13 +1,28 @@
 <app-navigation></app-navigation>
-<h2>My Needs</h2>
 
-<app-need-form></app-need-form>
+<div *ngIf="username != 'admin'; else elseBlock">
+  <h2>Villain Needs</h2>
+</div>
+<ng-template #elseBlock>
+  <h2>My Needs</h2>
+</ng-template>
+
+
+<div *ngIf="username === 'admin'">
+  <app-need-form></app-need-form>
+</div>
 
 <ul class="cupboard">
   <li *ngFor="let need of needs">
     <a routerLink="/detail/{{need.id}}">
       <span class="badge">{{need.id}}</span> {{need.name}}
     </a>
-    <button class="delete" title="delete need" (click)="delete(need)">x</button>
+    <div *ngIf="username === 'admin'; else elseBlock">
+      <button class="delete" title="delete need" (click)="delete(need)">x</button>
+    </div>
+
+    <ng-template #elseBlock>
+      <button class="add-to-basket" title="add need to basket" (click)="addToFundingBasket(username, need.id)">+</button>
+    </ng-template>
   </li>
 </ul>

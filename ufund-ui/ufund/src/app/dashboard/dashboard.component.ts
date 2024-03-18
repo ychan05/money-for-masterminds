@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { Need } from '../need';
 import { NeedService } from '../need.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-dashboard',

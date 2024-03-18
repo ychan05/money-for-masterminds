@@ -2,7 +2,7 @@
 
     <h2>{{need.name | uppercase}} Details</h2>
     <div><span>id: </span>{{need.id}}</div>
-    <div>
+    <div *ngIf="username === 'admin' else elseBlock">
         <label for="need-name">Need name: </label>
         <input id="need-name" [(ngModel)]="need.name" placeholder="name">
         <br>
@@ -12,6 +12,26 @@
         <label for="need-quantity">Need quantity: </label>
         <input id="need-quantity" [(ngModel)]="need.quantity" placeholder="quantity">
     </div>
-    <button (click)="goBack()">Back</button>
-    <button type="button" (click)="save()">save</button>
-  </div>
+
+    <ng-template #elseBlock>
+        <label for="need-name">Need name: </label>
+        {{need.name}}
+        <br>
+        <label for="need-price">Need price:</label>
+        {{need.price}}
+        <br>
+        <label for="need-quantity">Need quantity: </label>
+        {{need.quantity}}
+        <br>
+    </ng-template>
+
+
+    <div *ngIf="username === 'admin'">
+        <button (click)="goBack()">Back</button>
+        <button type="button" (click)="save()">save</button>
+    </div> 
+
+    <div *ngIf="username != 'admin'">
+        <button (click)="goBack()">Back</button>
+        <button type="button" (click)="addToFundingBasket(username, need.id)">add to basket</button>
+    </div>

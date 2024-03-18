@@ -4,6 +4,8 @@ import { Need } from '../need';
 import { NEEDS } from '../mock-needs';
 import { NeedService } from '../need.service';
 import { MessageService } from '../message.service';
+import { UserService } from '../user.service';
+import { HelperService } from '../helper.service';
 
 @Component({
   selector: 'app-cupboard',
@@ -11,8 +13,9 @@ import { MessageService } from '../message.service';
   styleUrl: './cupboard.component.css'
 })
 export class CupboardComponent {
-  constructor(private needService: NeedService, private messageService: MessageService) {}
+  constructor(private needService: NeedService, private messageService: MessageService, public userService: UserService, private helperService: HelperService) {}
   needs: Need[] = [];
+  username: string = '';
 
   getNeeds(): void {
     this.needService.getNeeds()
@@ -20,6 +23,7 @@ export class CupboardComponent {
   }
 
   ngOnInit() {
+    this.username = this.userService.loginObj.username;
     this.getNeeds();
   }
 
@@ -30,6 +34,10 @@ export class CupboardComponent {
       .subscribe(need => {
         this.needs.push(need);
       });
+  }
+
+  addToFundingBasket(username: string, needId: number): void {
+    this.helperService.addToFundingBasket(username, needId).subscribe();
   }
 
   delete(need: Need): void {

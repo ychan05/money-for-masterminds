@@ -39,7 +39,7 @@ export class HelperService {
     const url = `${this.helperUrl}/${username}/basket/${needId}`;
 
     return this.http.post<Need>(url, this.httpOptions).pipe(
-      tap((newNeed: Need) => this.log(`added need w/ id=${newNeed.id}`)),
+      tap(() => this.log(`added need w/ id=${needId}`)),
       catchError(this.handleError<Need>('addToFundingBasket'))
     );
   }
