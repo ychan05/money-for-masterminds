@@ -115,6 +115,7 @@ public class HelperFileDAO implements HelperDAO {
 
     @Override
     public User getUser(String username) throws IOException {
+        load();
         for (User user : users.values()) {
             if (user.getUsername().equals(username)) {
                 return user;

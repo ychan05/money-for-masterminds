@@ -6,6 +6,7 @@ import { Observable, catchError, of, tap } from 'rxjs';
 import { Need } from './need';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { HelperService } from './helper.service';
 
 @Injectable({
   providedIn: 'root'
