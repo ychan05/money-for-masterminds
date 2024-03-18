@@ -1,17 +1,23 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { MessageService } from './message.service';
 import { Router } from '@angular/router';
 import { Observable, catchError, of, tap } from 'rxjs';
 import { Need } from './need';
+import { AppComponent } from './app.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  loginObj: Login;
+  private nav : NavigationComponent;
+  public loginObj: Login;
+  appComponent: AppComponent;
   constructor(private http: HttpClient, private messageService: MessageService, private router: Router) { 
       this.loginObj = new Login();
+      this.appComponent = new AppComponent();
+      this.nav = new NavigationComponent(this);
     }
     
 
@@ -36,12 +42,8 @@ export class UserService {
         console.log(data);
         this.loginObj.username = username;
         this.loginObj.basket = data.basket;
-        if(this.loginObj.username == "admin"){
-          // this.router.navigateByUrl(MANAGER-PATH)
-        }
-        else{
-          // this.router.navigateByUrl(HELPER-PATH)
-        }
+        this.nav = new NavigationComponent(this);
+        this.router.navigateByUrl("/dashboard");
       },
       error: error => {
         alert("Incorrect username");
@@ -55,24 +57,12 @@ export class UserService {
         alert("Account successfully created");
       },
       error: error => {
-        alert("Cannot create an account with this username");
+        alert("Cannot create an account with this username")
       }
       
     });
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-
-      console.error(error); // log to console instead
-
-      this.log(`${operation} failed: ${error.message}`);
-
-      alert(error.message);
-
-      return of(result as T);
-    };
-  }
 }
 export class Login {
   username: string; 

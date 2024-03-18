@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'detail/:id', component: NeedDetailComponent},
   { path: 'cupboard', component: CupboardComponent},
-  { path: 'funding-basket', component: FundingBasketComponent}
+  { path: 'funding-basket', component: FundingBasketComponent},
+  { path: 'dashboard', component: DashboardComponent}
 ];
 
 @NgModule({

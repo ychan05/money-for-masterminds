@@ -12,6 +12,7 @@ import { NeedSearchComponent } from './need-search/need-search.component';
 import { NeedFormComponent } from './need-form/need-form.component';
 import { LoginComponent } from './login/login.component';
 import { FundingBasketComponent } from './funding-basket/funding-basket.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FundingBasketComponent } from './funding-basket/funding-basket.componen
     NeedSearchComponent,
     NeedFormComponent,
     FundingBasketComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
