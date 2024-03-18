@@ -106,6 +106,7 @@ public class HelperFileDAO implements HelperDAO {
 
     @Override
     public Set<Need> getFundingBasket(User user) throws IOException {
+        load();
         if (user != null) {
             return user.getBasket();
         }
