@@ -89,7 +89,7 @@ public class HelperController {
 
     @PostMapping("/{username}/basket/{needId}")
     public ResponseEntity<?> addToFundingBasket(@PathVariable String username, @PathVariable int needId) {
-        LOG.info("POST /helper/basket/" + needId);
+        LOG.info("POST /" + username + "/basket/" + needId);
 
         try {
             // Get the user by username

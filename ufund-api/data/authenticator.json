@@ -1,1 +1,1 @@
-[{"username":"Gradono","basket":[{"name":"Ray gun","price":100.0,"quantity":1,"id":12}]},{"username":"Wumbo","basket":[]}]
+[{"username":"Gradono","basket":[{"name":"super suit","price":100.0,"quantity":1,"id":13},{"name":"Ray gun","price":100.0,"quantity":1,"id":12},{"name":"Ray gun","price":100.0,"quantity":1,"id":12}]},{"username":"Wumbo","basket":[]},{"username":"admin","basket":[]},{"username":"new_user","basket":[{"name":"super suit","price":100.0,"quantity":1,"id":13}]}]
