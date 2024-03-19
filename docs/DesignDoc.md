@@ -19,7 +19,7 @@ geometry: margin=1in
 
 ## Executive Summary
 
-This is a summary of the project.
+Currently, villains have been severely underfunded compared to heroes. At Money For Masterminds, we hope to lessen the financial disparities between through groups through a crowdfunding application. With our application, super villains will be able fund their evil schemes through the help of generous donors. 
 
 ### Purpose
 Money For Masterminds is a management system that allows super villains to put out a list of needs and have other people donate to those needs.
@@ -57,9 +57,9 @@ This section describes the application domain.
 
 ![Domain Model](domain-model.png)
 
-> _**[Sprint 2 & 4]** Provide a high-level overview of the domain for this application. You
-> can discuss the more important domain entities and their relationship
-> to each other._
+The foundation of the Money For Masterminds application is the `Need`. A `Need` is a representation of a single component that a villain requires to complete their schemes.  
+A villain or the `Manager` is able to manage their specific list of `Needs` through the `Cupboard`.  
+A `Helper` is someone who is trying to fund a villain. They are able to search through the `Cupboard` for `Needs` they are looking to sponsor, and add them to a `Funding Basket`, which acts as a shopping cart. Through the `Funding Basket`, `Helpers` are able to remove `Needs` or `Checkout`, which represents the donations being made towards the specific `Needs` found in the `Funding Basket`. 
 
 
 ## Architecture and Design
