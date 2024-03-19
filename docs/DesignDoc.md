@@ -22,8 +22,7 @@ geometry: margin=1in
 This is a summary of the project.
 
 ### Purpose
->  _**[Sprint 2 & 4]** Provide a very brief statement about the project and the most
-> important user group and user goals._
+Money For Masterminds is a management system that allows super villains to put out a list of needs and have other people donate to those needs.
 
 ### Glossary and Acronyms
 > _**[Sprint 2 & 4]** Provide a table of terms and acronyms._
@@ -42,7 +41,8 @@ This section describes the features of the application.
 > maybe Epics and critical Stories._
 
 ### Definition of MVP
-> _**[Sprint 2 & 4]** Provide a simple description of the Minimum Viable Product._
+A manager user is able to log in to the web app through the `admin` username. They are then able to add, remove, and edit needs in their cupboard as well as search for individual needs.  
+A helper user is able to sign up with and login to a unique username. They are able to search for needs and add and remove them from their funding basket.
 
 ### MVP Features
 >  _**[Sprint 4]** Provide a list of top-level Epics and/or Stories of the MVP._
