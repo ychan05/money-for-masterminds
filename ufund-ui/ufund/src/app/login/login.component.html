@@ -1,0 +1,22 @@
+<body>
+    <div class="container">
+        <div class = "login-box">
+            <h2>Login</h2>
+            <form action = "#">
+                <div class = "input-box">
+                    <input type="username" [(ngModel)]="username" name="Username" required>
+                    <label>Username</label>
+                </div>
+                <button type="submit" class="btn" (click)="onLogIn(username)">Login</button>
+            </form>
+            <h2>Sign-in</h2>
+            <form>
+                <div class = "signup-box">
+                    <input type="username2" [(ngModel)]="newUser.username" name="Username2" required>
+                    <label>Username</label>
+                </div>
+                <button type="submit" class="btn" (click)="onSignIn(newUser.username)">Sign In</button>
+            </form>
+        </div>
+    </div>
+</body>

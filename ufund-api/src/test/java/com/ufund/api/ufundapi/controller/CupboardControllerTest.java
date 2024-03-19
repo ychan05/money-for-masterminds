@@ -20,7 +20,7 @@ import org.springframework.http.ResponseEntity;
 /**
  * Test Controller for Cupboard
  * 
- * @author Yat Long Chan, Graden Olson, Ben Hemmers
+ * @author Yat Long Chan, Graden Olson, Ben Hemmers, Vincent Son
  */
 public class CupboardControllerTest {
     private CupboardController controller;
@@ -33,7 +33,7 @@ public class CupboardControllerTest {
     }
 
     @Test
-    public void deleteNeed() throws IOException {
+    public void testDeleteNeed() throws IOException {
         // setup
         int id = 1;
         
@@ -48,7 +48,7 @@ public class CupboardControllerTest {
     }
 
     @Test
-    public void deleteNeedNotFound() throws IOException {
+    public void testDeleteNeedNotFound() throws IOException {
         // setup
         int id = 1;
 
@@ -109,7 +109,7 @@ public class CupboardControllerTest {
     }
 
     @Test
-    public void getNeed() throws IOException {
+    public void testGetNeed() throws IOException {
         // setup
         Need need = new Need(1, "nuke", 100, 1);
 
@@ -124,7 +124,7 @@ public class CupboardControllerTest {
     }
 
     @Test
-    public void getNeedNotFound() throws IOException {
+    public void testGetNeedNotFound() throws IOException {
         // setup
         int needId = 200;
 
@@ -138,7 +138,7 @@ public class CupboardControllerTest {
     }
 
     @Test
-    public void getNeedError() throws IOException {
+    public void testGetNeedError() throws IOException {
         // setup
         int needId = 200;
 

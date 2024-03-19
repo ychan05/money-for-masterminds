@@ -58,7 +58,7 @@ public class CupboardController {
 
         try{
             Need newNeed = cupboardDAO.createNeed(need);
-            if(newNeed == null){
+            if(newNeed == null){ 
                 return new ResponseEntity<>(HttpStatus.CONFLICT);
             }
             else return new ResponseEntity<Need>(newNeed, HttpStatus.CREATED);
