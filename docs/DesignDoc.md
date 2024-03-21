@@ -188,6 +188,10 @@ to the immediate coupling, enhancing the maintainability and flexibility of the 
 > have not had any testing yet. Highlight the issues found during
 > acceptance testing and if there are any concerns._
 
+User stories that passed their acceptance criteria tests: 13
+User stories with some acceptance criteria tests failing: 0
+User stories without any acceptance criteria testing: 1
+
 ### Unit Testing and Code Coverage
 > _**[Sprint 4]** Discuss your unit testing strategy. Report on the code coverage
 > achieved from unit testing of the code base. Discuss the team's
