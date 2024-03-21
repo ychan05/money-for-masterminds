@@ -194,6 +194,8 @@ User stories with some acceptance criteria tests failing: 0
 
 User stories without any acceptance criteria testing: 1
 
+No issues with acceptance criteria testing. All fully implemented user stories pass their acceptance criteria tests. 
+
 ### Unit Testing and Code Coverage
 > _**[Sprint 4]** Discuss your unit testing strategy. Report on the code coverage
 > achieved from unit testing of the code base. Discuss the team's
