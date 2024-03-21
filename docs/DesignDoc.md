@@ -189,7 +189,9 @@ to the immediate coupling, enhancing the maintainability and flexibility of the 
 > acceptance testing and if there are any concerns._
 
 User stories that passed their acceptance criteria tests: 13
+
 User stories with some acceptance criteria tests failing: 0
+
 User stories without any acceptance criteria testing: 1
 
 ### Unit Testing and Code Coverage
