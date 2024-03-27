@@ -133,6 +133,8 @@ CupboardFileDAO: Used to interact with the file storage system and perform CRUD 
 
 **Single Responsibility:** In sprint 1, the single responsibility principle is used to ensure that each class we create for our API  is only responsible for one aspect of the functionality. We separate our classes into the Model, Persistence, and Controller tiers. In the Model tier, we have the Need class, which acts as a reperesentation of a need but is not responsible for managing CRUD operations. In the Persistence tier, we have a CupboardFileDAO class which is responsible for managing only interacting with the file system and performing CRUD operations on Need objects. Finally, in the Controller tier, we have the CupboardController, which is only responsible for responding to client HTTP requests.  
 
+![SR](sr.png)
+
 **Open/Closed:** We use the open/closed principle in sprint 1 mainly in the persistence tier. By creating a CupboardDAO interface, we can easily add additional operations to the API without removing any existing code, and we can work with alternative storage systems simply by creating another implementation of the CupboardDAO interface. This also means that no code needs to be changed in the Controller tier if we were to switch to another storage system. 
 
 **Low Coupling:** We will use low coupling to limit the number of unnecessary
