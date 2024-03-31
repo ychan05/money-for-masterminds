@@ -15,6 +15,7 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ufund.api.ufundapi.model.Need;
+import com.ufund.api.ufundapi.model.User;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -132,5 +133,19 @@ public class CupboardFileDAOTests {
         // analyze
         assertNotNull(result); // check that the need was found
         assertEquals(testNeeds[1], result); // check that the need is the expected need
+    }
+
+    @Test
+    public void testCheckoutNeeds() throws IOException {
+        // setup
+        User user = new User("Gradono");
+        user.addToBasket(testNeeds[0]);
+        int initialQuantity = testNeeds[0].getQuantity();
+
+        // invoke
+        assertDoesNotThrow(() -> dao.checkoutNeeds(user), "checkoutNeeds should not throw an exception");
+        
+        // analyze
+        assertEquals(initialQuantity - 1, testNeeds[0].getQuantity());
     }
 }

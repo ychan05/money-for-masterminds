@@ -64,13 +64,4 @@ export class HelperService {
       return of(result as T);
     };
   }
-
-  reconnectToApi(): Observable<any> {
-    return this.http.get<any>(this.helperUrl, this.httpOptions)
-      .pipe(
-        tap(_ => this.log('reconnected to API')),
-        catchError(this.handleError<any>('reconnectToApi', []))
-      );
-  }
 }
-
