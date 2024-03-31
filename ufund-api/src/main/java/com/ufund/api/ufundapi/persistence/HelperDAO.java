@@ -59,6 +59,8 @@ public interface HelperDAO {
      * Checkouts needs from the funding basket of the specified Helper User
      *  @param user The Helper User
      * @throws IOException if an issue with underlying storage
+     * 
+     * IMPORTANT: This method should be called after the cupboard has been updated
      */
     void checkoutNeeds(User user) throws IOException;
 }

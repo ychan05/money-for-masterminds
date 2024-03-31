@@ -64,6 +64,8 @@ public interface CupboardDAO {
      * Adjust needs according to a user checkout
      * @param user The user who is checking out
      * @throws IOException
+     * 
+     * IMPORTANT: this method should be called before user checkout
      */
     void checkoutNeeds(User user) throws IOException;
 }
