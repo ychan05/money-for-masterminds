@@ -137,6 +137,8 @@ CupboardFileDAO: Used to interact with the file storage system and perform CRUD 
 
 **Open/Closed:** We use the open/closed principle in sprint 1 mainly in the persistence tier. By creating a CupboardDAO interface, we can easily add additional operations to the API without removing any existing code, and we can work with alternative storage systems simply by creating another implementation of the CupboardDAO interface. This also means that no code needs to be changed in the Controller tier if we were to switch to another storage system. 
 
+![open-closed](open_closed.png)
+
 **Low Coupling:** We will use low coupling to limit the number of unnecessary
 relationships between classes. Working together with single responsibility, low coupling can be
 used to make sure the relationship between classes fits into that classes’ single responsibility.
