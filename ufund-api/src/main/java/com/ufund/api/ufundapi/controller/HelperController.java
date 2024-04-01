@@ -110,11 +110,16 @@ public class HelperController {
 
     @PostMapping("/checkout/{username}")
     public ResponseEntity<String> checkoutNeeds(@PathVariable String username) {
+        LOG.info("POST /" + username);
+
         try {
             // Get the user by username
             User user = helperDAO.getUser(username);
 
-            // Perform the checkout process for the user
+            // Perform the CUPBOARD checkout process first
+            cupboardDAO.checkoutNeeds(user);
+
+            // Perform the HELPER checkout process second
             helperDAO.checkoutNeeds(user);
 
             // Return a response with HTTP status of OK informing user that checkout was successful
