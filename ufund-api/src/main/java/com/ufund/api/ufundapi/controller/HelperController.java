@@ -107,4 +107,20 @@ public class HelperController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while adding need to funding basket");
         }
     }
+
+    @PostMapping("/checkout/{username}")
+    public ResponseEntity<String> checkoutNeeds(@PathVariable String username) {
+        try {
+            // Get the user by username
+            User user = helperDAO.getUser(username);
+
+            // Perform the checkout process for the user
+            helperDAO.checkoutNeeds(user);
+
+            // Return a response with HTTP status of OK informing user that checkout was successful
+            return ResponseEntity.ok("Checkout successful for user " + username);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error during checkout: " + e.getMessage());
+        }
+    }
 }
