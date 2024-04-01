@@ -1,1 +1,1 @@
-[{"name":"Ray gun","price":100.0,"quantity":-1,"id":12},{"name":"super suit","price":100.0,"quantity":-2,"id":13}]
+[{"id":12,"name":"Ray gun","price":100.0,"quantity":22},{"id":13,"name":"super suit","price":100.0,"quantity":0}]

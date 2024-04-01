@@ -22,7 +22,9 @@
     </div>
 
     <ng-template #elseBlock>
-      <button class="add-to-basket" title="add need to basket" (click)="addToFundingBasket(username, need.id)">+</button>
+      <div *ngIf="need.quantity > 0;">
+        <button class="add-to-basket" title="add need to basket" (click)="addToFundingBasket(username, need.id)">+</button>
+      </div>
     </ng-template>
   </li>
 </ul>

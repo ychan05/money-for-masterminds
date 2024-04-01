@@ -201,6 +201,7 @@ public class CupboardFileDAO implements CupboardDAO {
     @Override
     public Need[] getNeeds() throws IOException {
         synchronized(needs){
+            load();
             ArrayList<Need> needArrayList = new ArrayList<>();
 
             for (Need need : needs.values()) {
@@ -219,7 +220,10 @@ public class CupboardFileDAO implements CupboardDAO {
             for (Need need : user.getBasket()) {
                 if (needs.containsKey(need.getId())) {
                     Need currentNeed = needs.get(need.getId());
-                    currentNeed.setQuantity(currentNeed.getQuantity() - 1);
+
+                    if (currentNeed.getQuantity() > 0) {
+                        currentNeed.setQuantity(currentNeed.getQuantity() - 1);
+                    }
                 }
             }
             save();

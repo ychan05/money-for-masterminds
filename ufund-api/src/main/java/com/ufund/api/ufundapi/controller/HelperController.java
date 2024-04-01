@@ -109,7 +109,7 @@ public class HelperController {
     }
 
     @PostMapping("/checkout/{username}")
-    public ResponseEntity<String> checkoutNeeds(@PathVariable String username) {
+    public ResponseEntity<?> checkoutNeeds(@PathVariable String username) {
         LOG.info("POST /checkout/" + username);
 
         try {
