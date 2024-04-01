@@ -38,10 +38,11 @@ export class FundingBasketComponent {
       return;
     }
 
-    const checkoutConfirmed = window.confirm('Are you sure you want to checkout the Needs in your funding basket?');
-    
+    const checkoutConfirmed = window.confirm('Are you sure you want to checkout the needs in your funding basket?');
+
     if (checkoutConfirmed) {
-      this.router.navigate(['/confirmation']);
+    //  this.router.navigate(['/confirmation']);
+    this.delete;
     }
   }
 }

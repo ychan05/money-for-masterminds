@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HelperService } from '../helper.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -10,9 +11,12 @@ import { HelperService } from '../helper.service';
 export class ConfirmationComponent implements OnInit {
   checkedoutNeeds: any[] = [];
 
-  constructor(private router: Router, private helperService: HelperService) { }
+  username : string = '';
+
+  constructor(private router: Router, private helperService: HelperService, public userService: UserService) { }
 
   ngOnInit(): void {
+    this.username = this.userService.loginObj.username;
     this.getCheckedoutNeeds();
   }
 
@@ -20,5 +24,6 @@ export class ConfirmationComponent implements OnInit {
   }
 
   checkout(): void {
+
   }
 }

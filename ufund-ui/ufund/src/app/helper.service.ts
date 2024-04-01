@@ -54,6 +54,15 @@ export class HelperService {
     );
   }
 
+  /** POST: perform checkout operation */
+  checkoutNeeds(username: string): Observable<any> {
+    const url = `${this.helperUrl}/checkout/${username}`;
+    return this.http.post(url, {}).pipe(
+      tap(() => this.log(`checkout successful for user ${username}`)),
+      catchError(this.handleError<any>('checkoutNeeds'))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
