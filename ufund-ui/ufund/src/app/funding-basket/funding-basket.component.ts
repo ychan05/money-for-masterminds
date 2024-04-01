@@ -33,7 +33,15 @@ export class FundingBasketComponent {
   }
 
   checkout(): void {
-    // Navigate to the confirmation page
-    this.router.navigate(['/confirmation']);
+    if (this.fundingBasket.length === 0) {
+      alert('Your funding basket is empty. There is nothing to checkout.');
+      return;
+    }
+
+    const checkoutConfirmed = window.confirm('Are you sure you want to checkout the Needs in your funding basket?');
+    
+    if (checkoutConfirmed) {
+      this.router.navigate(['/confirmation']);
+    }
   }
 }

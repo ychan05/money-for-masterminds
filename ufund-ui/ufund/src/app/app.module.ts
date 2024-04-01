@@ -13,6 +13,7 @@ import { NeedFormComponent } from './need-form/need-form.component';
 import { LoginComponent } from './login/login.component';
 import { FundingBasketComponent } from './funding-basket/funding-basket.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     NeedFormComponent,
     FundingBasketComponent,
     NavigationComponent,
+    ConfirmationComponent,
   ],
   imports: [
     BrowserModule,
