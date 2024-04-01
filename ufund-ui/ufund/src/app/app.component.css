@@ -1,6 +1,12 @@
 /* AppComponent's private CSS styles */
 h1 {
     margin-bottom: 0;
+    font-family: "villainy";
+    color: darkorange;
+    -webkit-text-stroke: black;
+    -webkit-text-stroke-width: 1px;
+    text-shadow: 1px 4px rgb(0, 0, 0, 0.7);
+    text-align: center;
   }
   nav a {
     padding: 1rem;
