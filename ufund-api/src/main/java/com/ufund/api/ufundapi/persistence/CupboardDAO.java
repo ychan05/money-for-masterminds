@@ -2,6 +2,7 @@ package com.ufund.api.ufundapi.persistence;
 
 import java.io.IOException;
 import com.ufund.api.ufundapi.model.Need;
+import com.ufund.api.ufundapi.model.User;
  /**
   * Defines the interface for Need object persistence
   * @author Graden Olson
@@ -58,4 +59,13 @@ public interface CupboardDAO {
      * @throws IOException
      */
     boolean deleteNeed(int id) throws IOException;
+
+    /**
+     * Adjust needs according to a user checkout
+     * @param user The user who is checking out
+     * @throws IOException
+     * 
+     * IMPORTANT: this method should be called before user checkout
+     */
+    void checkoutNeeds(User user) throws IOException;
 }

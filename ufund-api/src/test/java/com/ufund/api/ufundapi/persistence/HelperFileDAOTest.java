@@ -93,5 +93,16 @@ public class HelperFileDAOTest {
 
         assertFalse(user.getBasket().contains(need));
     }
+
+    @Test
+    public void testCheckoutNeeds() throws IOException {
+        User user = new User("testUser");
+        Need need = new Need("test", 10, 10);
+        user.addToBasket(need);
+
+        dao.checkoutNeeds(user);
+
+        assertTrue(user.getBasket().isEmpty());
+    }
 }
 

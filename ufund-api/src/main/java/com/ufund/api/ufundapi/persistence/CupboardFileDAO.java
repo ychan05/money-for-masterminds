@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.ufund.api.ufundapi.model.Need;
+import com.ufund.api.ufundapi.model.User;
 
 /**
  * Implements the functionality for JSON peristence for Cupboard
@@ -209,6 +210,19 @@ public class CupboardFileDAO implements CupboardDAO {
             Need[] needArray = new Need[needArrayList.size()];
             needArrayList.toArray(needArray);
             return needArray;
+        }
+    }
+
+    @Override
+    public void checkoutNeeds(User user) throws IOException {
+        synchronized(needs){
+            for (Need need : user.getBasket()) {
+                if (needs.containsKey(need.getId())) {
+                    Need currentNeed = needs.get(need.getId());
+                    currentNeed.setQuantity(currentNeed.getQuantity() - 1);
+                }
+            }
+            save();
         }
     }
 }

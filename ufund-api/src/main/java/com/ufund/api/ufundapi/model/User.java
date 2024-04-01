@@ -62,4 +62,11 @@ public class User {
     public String toString() {
         return String.format(STRING_FORMAT, username);
     }
+
+    /**
+     * Checks out the needs in the funding basket
+     */
+    public void checkout() {
+        basket.clear();
+    }
 }
