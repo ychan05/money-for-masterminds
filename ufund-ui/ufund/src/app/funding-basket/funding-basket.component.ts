@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { HelperService } from '../helper.service';
 import { MessageService } from '../message.service';
 import { Need } from '../need';
@@ -10,7 +11,7 @@ import { UserService } from '../user.service';
   styleUrl: './funding-basket.component.css'
 })
 export class FundingBasketComponent {
-  constructor(private helperService : HelperService, private messageService : MessageService, public userService: UserService) {}
+  constructor(private helperService : HelperService, private messageService : MessageService, public userService: UserService, private router: Router) {}
 
   username : string = '';
 
@@ -29,5 +30,10 @@ export class FundingBasketComponent {
   delete(username: string, needId: number) {
     this.fundingBasket = this.fundingBasket.filter(n => n.id !== needId);
     this.helperService.removeFromFundingBasket(username, needId).subscribe();
+  }
+
+  checkout(): void {
+    // Navigate to the confirmation page
+    this.router.navigate(['/confirmation']);
   }
 }
