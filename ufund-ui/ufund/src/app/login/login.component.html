@@ -7,7 +7,11 @@
                     <input type="username" [(ngModel)]="username" name="Username" required>
                     <label>Username</label>
                 </div>
-                <button type="submit" class="btn" (click)="onLogIn(username)">Login</button>
+                <div class = "input-box">
+                    <input type="password" [(ngModel)]="password" name="Password" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="btn" (click)="onLogIn(username, password)">Login</button>
             </form>
             <h2>Sign-in</h2>
             <form>
@@ -15,7 +19,11 @@
                     <input type="username2" [(ngModel)]="newUser.username" name="Username2" required>
                     <label>Username</label>
                 </div>
-                <button type="submit" class="btn" (click)="onSignIn(newUser.username)">Sign In</button>
+                <div class = "signup-box">
+                    <input type="password2" [(ngModel)]="newUser.password" name="Password2" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="btn" (click)="onSignIn(newUser.username, newUser.password)">Sign In</button>
             </form>
         </div>
     </div>

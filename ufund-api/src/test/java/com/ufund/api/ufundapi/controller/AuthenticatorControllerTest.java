@@ -38,7 +38,7 @@ public class AuthenticatorControllerTest {
     @Test
     public void testSignin() throws IOException{
         // setup
-        User user = new User("Gradono");
+        User user = new User("Gradono", "h");
 
         // simulate success
         when(dao.signin(user)).thenReturn(user);
@@ -54,7 +54,7 @@ public class AuthenticatorControllerTest {
     @Test
     public void testSigninFailed() throws IOException {
         // setup
-        User user = new User("wuhhh");
+        User user = new User("wuhhh", "h");
 
         // simulate IOException
         doThrow(new IOException()).when(dao).signin(user);
@@ -69,7 +69,7 @@ public class AuthenticatorControllerTest {
     @Test
     public void testCantSignIn() throws IOException {
         // setup
-        User user = new User("wuhhh");
+        User user = new User("wuhhh", "h");
 
         // simulate failure
         when(dao.signin(user)).thenReturn(null);
@@ -84,13 +84,13 @@ public class AuthenticatorControllerTest {
     @Test
     public void testLogin() throws IOException {
         // setup
-        User user = new User("wuhhhh");
+        User user = new User("wuhhhh", "h");
 
         // simulate success
-        when(dao.login(user.getUsername())).thenReturn(user);
+        when(dao.login(user.getUsername(), user.getPassword())).thenReturn(user);
 
         // invoke
-        ResponseEntity<User> response = controller.login(user.getUsername());
+        ResponseEntity<User> response = controller.login(user.getUsername(), user.getPassword());
 
         // analyze
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -100,13 +100,13 @@ public class AuthenticatorControllerTest {
     @Test
     public void testLoginNotFound() throws IOException {
         // setup
-        User user = new User("wuhhh");
+        User user = new User("wuhhh", "h");
 
         // simulate not found
-        when(dao.login(user.getUsername())).thenReturn(null);
+        when(dao.login(user.getUsername(), user.getPassword())).thenReturn(null);
 
         // invoke
-        ResponseEntity<User> response = controller.login(user.getUsername());
+        ResponseEntity<User> response = controller.login(user.getUsername(), user.getPassword());
 
         // analyze
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
@@ -116,11 +116,12 @@ public class AuthenticatorControllerTest {
     public void testLoginError() throws IOException {
         // setup
         String username = "wuhhh";
+        String password = "h";
 
-        doThrow(new IOException()).when(dao).login(username);
+        doThrow(new IOException()).when(dao).login(username, password);
 
         // invoke
-        ResponseEntity<User> response = controller.login(username);
+        ResponseEntity<User> response = controller.login(username, password);
 
         // analyze
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());

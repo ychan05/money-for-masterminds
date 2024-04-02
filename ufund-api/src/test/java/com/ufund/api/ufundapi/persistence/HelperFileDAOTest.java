@@ -40,10 +40,10 @@ public class HelperFileDAOTest {
     public void setup() throws IOException {
         objectMapper = mock(ObjectMapper.class);
         testUsers = new User[4];
-        testUsers[0] = new User("Gradono");
-        testUsers[1] = new User("Bill");
-        testUsers[2] = new User("Phil");
-        testUsers[3] = new User("Krill");
+        testUsers[0] = new User("Gradono", "h");
+        testUsers[1] = new User("Bill", "billy");
+        testUsers[2] = new User("Phil", "philly");
+        testUsers[3] = new User("Krill", "krilly");
 
         when(objectMapper
             .readValue(new File("test.txt"), User[].class))
@@ -53,7 +53,7 @@ public class HelperFileDAOTest {
 
     @Test
     public void testGetFundingBasket() throws IOException {
-        User user = new User("testUser");
+        User user = new User("testUser", "h");
         Need need = new Need("test", 10, 1);
         user.addToBasket(need);
 
@@ -65,7 +65,7 @@ public class HelperFileDAOTest {
 
     @Test
     public void testGetUser() throws IOException {
-        User user = new User("Gradono");
+        User user = new User("Gradono", "h");
 
         User result = dao.getUser(user.getUsername());
 
@@ -75,7 +75,7 @@ public class HelperFileDAOTest {
 
     @Test
     public void testAddNeedToBasket() throws IOException {
-        User user = new User("testUser");
+        User user = new User("testUser", "h");
         Need need = new Need("test", 10, 10);
 
         dao.addNeedToBasket(user, need);
@@ -85,7 +85,7 @@ public class HelperFileDAOTest {
 
     @Test
     public void testRemoveNeedFromBasket() throws IOException {
-        User user = new User("testUser");
+        User user = new User("testUser", "h");
         Need need = new Need("test", 10, 10);
         user.addToBasket(need);
 
