@@ -47,7 +47,8 @@ h1 {
     cursor: auto;
   }
   #main-body{
-    background-image: url(https://as2.ftcdn.net/v2/jpg/01/82/34/57/1000_F_182345750_1vHOQNEmCVuXli9peuUEsDhZU5QRyzuq.jpg);
+    /*background-image: url(https://as2.ftcdn.net/v2/jpg/01/82/34/57/1000_F_182345750_1vHOQNEmCVuXli9peuUEsDhZU5QRyzuq.jpg);*/
+    background-color: lightgray;
   }
   
   /* everywhere else */
