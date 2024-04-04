@@ -33,7 +33,7 @@ public interface RiddleDAO {
      * @param riddle object to be updated and saved
      * @return updated {@link Riddle riddle} if successful, null if {@link Riddle riddle} could not be found
      */
-    public Riddle updateRiddle(Riddle riddle) throws IOException;
+     Riddle updateRiddle(Riddle riddle) throws IOException;
 
     /**
      * Deletes a {@linkplain Riddle riddle} with the given id
@@ -48,7 +48,7 @@ public interface RiddleDAO {
      * @param contrainsText
      * @return
      */
-    Riddle[] findRiddles(String containsText);
+    Riddle[] findRiddles(String containsText) throws IOException;
 
     
 }
