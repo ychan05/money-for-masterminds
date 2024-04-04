@@ -13,18 +13,21 @@ import { Login, UserService } from '../user.service';
 })
 export class LoginComponent {
   username: string;
+  password: string;
   newUser: Login;
   constructor(public userService: UserService){
     this.newUser = new Login();
     this.username = "";
+    this.password = "";
   }
 
-  onLogIn(username: string){
-    this.userService.login(username);
+  onLogIn(username: string, password: string){
+    this.userService.login(username, password);
   }
 
-  onSignIn(username: string){
+  onSignIn(username: string, password: string){
     this.newUser.username = username;
+    this.newUser.password = password;
     this.userService.signin(this.newUser);
   }
 }

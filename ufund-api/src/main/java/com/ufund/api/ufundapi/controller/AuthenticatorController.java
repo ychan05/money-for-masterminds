@@ -59,12 +59,12 @@ public class AuthenticatorController {
         }
     }
 
-    @GetMapping("/{username}")
-    public ResponseEntity<User> login(@PathVariable String username) {
-        LOG.info("GET /authenticator/" + username);
+    @GetMapping("/{username}/{password}")
+    public ResponseEntity<User> login(@PathVariable String username, @PathVariable String password) {
+        LOG.info("GET /authenticator/" + username + "/" + password);
 
         try {
-            User user = authenticatorDAO.login(username);
+            User user = authenticatorDAO.login(username, password);
             if(user != null) {
                 return new ResponseEntity<>(user, HttpStatus.OK);
             }
