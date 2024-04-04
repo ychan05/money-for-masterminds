@@ -153,6 +153,9 @@ public class CupboardFileDAO implements CupboardDAO {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Need createNeed(Need need) throws IOException {
         synchronized(needs){
@@ -165,6 +168,9 @@ public class CupboardFileDAO implements CupboardDAO {
         }
     }
 
+   /**
+     * {@inheritDoc}
+     */ 
     @Override
     public Need updateNeed(Need need) throws IOException {
         synchronized(needs){
@@ -187,6 +193,9 @@ public class CupboardFileDAO implements CupboardDAO {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Need getNeed(int id) throws IOException {
         synchronized(needs) {
@@ -197,6 +206,9 @@ public class CupboardFileDAO implements CupboardDAO {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Need[] getNeeds() throws IOException {
         synchronized(needs){
