@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { Riddle } from '../riddle';
 import { RiddleService } from '../riddle.service';
@@ -11,17 +11,24 @@ import { Location } from '@angular/common';
   styleUrl: './riddle-detail.component.css'
 })
 export class RiddleDetailComponent {
-  username: string = '';
+  username: string = sessionStorage.getItem('user') || "";
 
   constructor(
     private route: ActivatedRoute,
     private riddleService: RiddleService,
     private location: Location,
-    public userService: UserService
+    public userService: UserService,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
-    this.username = this.userService.loginObj.username;
+    if (this.username !== 'admin') {
+      if (this.username === '') {
+        this.router.navigate(['/login']);
+      } else {
+        this.router.navigate(['/dashboard']);
+      }
+    }
     this.getRiddle();
   }
 

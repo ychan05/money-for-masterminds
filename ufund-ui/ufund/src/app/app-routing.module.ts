@@ -10,7 +10,7 @@ import { RiddleDetailComponent } from './riddle-detail/riddle-detail.component';
 import { RiddlesComponent } from './riddles/riddles.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: '',  redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'detail/:id', component: NeedDetailComponent},
   { path: 'cupboard', component: CupboardComponent},

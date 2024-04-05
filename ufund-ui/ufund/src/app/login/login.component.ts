@@ -20,7 +20,8 @@ export class LoginComponent {
   newUser: Login;
   userAnswer: string;
   riddle: Riddle;
-  constructor(public userService: UserService, public riddleService: RiddleService){
+  constructor(public userService: UserService, public riddleService: RiddleService, private router: Router){
+    this.getRandomRiddle();
     this.newUser = new Login();
     this.username = "";
     this.password = "";
@@ -28,8 +29,10 @@ export class LoginComponent {
     this.riddle = new Riddle(0, "", "");
   }
 
-  ngOnInit(): void {
-    this.getRandomRiddle();
+  ngOnInit() {
+    if (sessionStorage.getItem('user') !== null && sessionStorage.getItem('user') !== '') {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
 

@@ -44,6 +44,7 @@ export class UserService {
         this.loginObj.username = username;
         this.loginObj.password = password;
         this.loginObj.basket = data.basket;
+        sessionStorage.setItem('user', username);
         this.nav = new NavigationComponent(this);
         this.router.navigateByUrl("/dashboard");
       },
@@ -63,6 +64,11 @@ export class UserService {
       }
       
     });
+  }
+
+  logout() {
+    sessionStorage.removeItem('user');
+    this.router.navigateByUrl("/login");
   }
 
 }

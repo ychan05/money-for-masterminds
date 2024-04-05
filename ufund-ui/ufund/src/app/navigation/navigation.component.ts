@@ -8,12 +8,11 @@ import { Login, UserService } from '../user.service';
 })
 export class NavigationComponent {
   links: Array<string>;
-  userService: UserService;
+  username: string = sessionStorage.getItem('user') || "";
 
-  constructor(userService: UserService){
+    constructor(public userService: UserService){
     this.links = [];
-    this.userService = userService;
-    if(this.userService.loginObj.username == "admin"){
+    if(this.username == "admin"){
       this.links.push("/dashboard", "/cupboard", "/riddles");
       console.log(this.links);
     }
@@ -21,5 +20,9 @@ export class NavigationComponent {
       this.links.push("/dashboard", "/funding-basket", "/cupboard")
       console.log(this.links);
     }
+  }
+
+  logout(): void {
+    this.userService.logout();
   }
 }

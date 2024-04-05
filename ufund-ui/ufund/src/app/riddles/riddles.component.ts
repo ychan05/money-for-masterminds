@@ -5,6 +5,7 @@ import { RiddleService } from '../riddle.service';
 import { MessageService } from '../message.service';
 import { UserService } from '../user.service';
 import { HelperService } from '../helper.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cupboard',
@@ -12,25 +13,28 @@ import { HelperService } from '../helper.service';
   styleUrls: ['./riddles.component.css']
 })
 export class RiddlesComponent {
-  constructor(private riddleService: RiddleService, private messageService: MessageService, public userService: UserService, private helperService: HelperService) {}
+  constructor(private riddleService: RiddleService, private messageService: MessageService, public userService: UserService, private helperService: HelperService, private router : Router) { }
   riddles: Riddle[] = [];
-  username: string = '';
+  username: string = sessionStorage.getItem('user') || "";
 
   getRiddles(): void {
     this.riddleService.getRiddles()
-        .subscribe(riddles => this.riddles = riddles);
+      .subscribe(riddles => this.riddles = riddles);
   }
 
   ngOnInit() {
-    this.username = this.userService.loginObj.username;
     if (this.username !== 'admin') {
-      this.riddles = [];
+      if (this.username === '') {
+        this.router.navigate(['/login']);
+      } else {
+        this.router.navigate(['/dashboard']);
+      }
     } else {
       this.getRiddles();
     }
   }
 
-  add (question: string, answer: string): void {
+  add(question: string, answer: string): void {
     question = question.trim();
     if (!question) { return; }
     this.riddleService.addRiddle({ question, answer } as Riddle)
