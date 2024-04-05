@@ -213,4 +213,18 @@ public class RiddleFileDAO implements RiddleDAO {
             return riddleArray;
         }
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Riddle getRandomRiddle() throws IOException {
+        synchronized(riddles){
+            if (riddles.isEmpty()) {
+                return null;
+            }
+            int randomIndex = (int)(Math.random() * riddles.size());
+            return (Riddle) riddles.values().toArray()[randomIndex];
+        } 
+    }
 }

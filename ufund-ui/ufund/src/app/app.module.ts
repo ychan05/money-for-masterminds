@@ -13,6 +13,9 @@ import { NeedFormComponent } from './need-form/need-form.component';
 import { LoginComponent } from './login/login.component';
 import { FundingBasketComponent } from './funding-basket/funding-basket.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { RiddleDetailComponent } from './riddle-detail/riddle-detail.component';
+import { RiddlesComponent } from './riddles/riddles.component';
+import { RiddleFormComponent } from './riddle-form/riddle-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { NavigationComponent } from './navigation/navigation.component';
     NeedFormComponent,
     FundingBasketComponent,
     NavigationComponent,
+    RiddleDetailComponent,
+    RiddlesComponent,
+    RiddleFormComponent,
   ],
   imports: [
     BrowserModule,

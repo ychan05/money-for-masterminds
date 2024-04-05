@@ -50,5 +50,11 @@ public interface RiddleDAO {
      */
     Riddle[] findRiddles(String containsText) throws IOException;
 
+    /**
+     * Retrieves a random {@linkplain Riddle riddle}
+     * @return a random {@link Riddle riddle} object
+     */
+    Riddle getRandomRiddle() throws IOException;
+
     
 }

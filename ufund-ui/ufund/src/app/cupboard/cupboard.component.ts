@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 
 import { Need } from '../need';
-import { NEEDS } from '../mock-needs';
 import { NeedService } from '../need.service';
 import { MessageService } from '../message.service';
 import { UserService } from '../user.service';

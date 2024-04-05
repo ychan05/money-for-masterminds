@@ -136,4 +136,21 @@ public class RiddleController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/random")
+    public ResponseEntity<Riddle> getRandomRiddle() {
+        LOG.info("GET /riddle/random");
+
+        try {
+            Riddle riddle = riddleDAO.getRandomRiddle();
+            if (riddle != null) {
+                return new ResponseEntity<>(riddle, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

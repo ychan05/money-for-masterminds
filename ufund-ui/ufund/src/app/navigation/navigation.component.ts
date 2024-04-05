@@ -14,7 +14,7 @@ export class NavigationComponent {
     this.links = [];
     this.userService = userService;
     if(this.userService.loginObj.username == "admin"){
-      this.links.push("/dashboard", "/cupboard");
+      this.links.push("/dashboard", "/cupboard", "/riddles");
       console.log(this.links);
     }
     else{
