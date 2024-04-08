@@ -3,5 +3,9 @@
         <li *ngFor="let link of links">
             <a routerLink="{{link}}">{{link.substring(1).toUpperCase()}}</a>
         </li>
+
+        <li>
+            <a (click)="logout()">LOGOUT</a>
+        </li>
     </ul>
 </nav>

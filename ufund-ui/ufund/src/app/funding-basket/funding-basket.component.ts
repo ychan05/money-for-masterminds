@@ -3,6 +3,7 @@ import { HelperService } from '../helper.service';
 import { MessageService } from '../message.service';
 import { Need } from '../need';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-funding-basket',
@@ -10,15 +11,20 @@ import { UserService } from '../user.service';
   styleUrl: './funding-basket.component.css'
 })
 export class FundingBasketComponent {
-  constructor(private helperService : HelperService, private messageService : MessageService, public userService: UserService) {}
+  constructor(private helperService : HelperService, private messageService : MessageService, public userService: UserService, private router : Router) {}
 
-  username : string = '';
+  username : string = sessionStorage.getItem('user') || "";
 
   fundingBasket: Need[] = [];
   
   ngOnInit() {
-    this.username = this.userService.loginObj.username;
-    this.getFundingBasket();
+    if (this.username === '') {
+      this.router.navigate(['/login']);
+    } else if (this.username === 'admin') {
+      this.router.navigate(['/dashboard']);
+    } else {
+      this.getFundingBasket();
+    }
   }
 
   getFundingBasket(): void {

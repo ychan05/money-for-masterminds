@@ -96,10 +96,13 @@ public class AuthenticatorFileDAO implements AuthenticatorDAO{
 
     // TODO - ADD PASSWORD
     @Override
-    public User login(String username) throws IOException {
+    public User login(String username, String password) throws IOException {
         synchronized(users){
             if(users.containsKey(username)){
-                return users.get(username);
+                if(users.get(username).getPassword().equals(password)){
+                    return users.get(username);
+                }
+                else return null;
             }
             else return null; // returns null if user does not exist
         }

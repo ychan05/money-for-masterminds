@@ -36,10 +36,10 @@ public class AuthenticatorFileDAOTest {
     public void setup() throws IOException {
         objectMapper = mock(ObjectMapper.class);
         testUsers = new User[4];
-        testUsers[0] = new User("Gradono");
-        testUsers[1] = new User("Bill");
-        testUsers[2] = new User("Phil");
-        testUsers[3] = new User("Krill");
+        testUsers[0] = new User("Gradono", "h");
+        testUsers[1] = new User("Bill", "billy");
+        testUsers[2] = new User("Phil", "philly");
+        testUsers[3] = new User("Krill", "krilly");
 
         when(objectMapper
             .readValue(new File("test.txt"), User[].class))
@@ -50,13 +50,14 @@ public class AuthenticatorFileDAOTest {
     @Test
     public void testSignin() throws IOException{
         // invoke
-        User newUser = new User("hello");
+        User newUser = new User("hello", "h");
         User result = assertDoesNotThrow(() -> dao.signin(newUser), "Unexpected exception thrown");
 
         // analyze
         assertNotNull(result);
-        User actual = dao.login(newUser.getUsername());
+        User actual = dao.login(newUser.getUsername(), newUser.getPassword());
         assertEquals(actual.getUsername(), newUser.getUsername());
+        assertEquals(actual.getPassword(), newUser.getPassword());
         assertEquals(actual.getBasket(), newUser.getBasket());
     }
 
@@ -73,7 +74,7 @@ public class AuthenticatorFileDAOTest {
     @Test
     public void testLoginNotFound() throws IOException {
         // invoke
-        User result = assertDoesNotThrow(() -> dao.login("waah"), "getUser should not throw an exception");
+        User result = assertDoesNotThrow(() -> dao.login("waah", "h"), "getUser should not throw an exception");
 
         // analyze
         assertNull(result); // check that the user was not found
@@ -82,7 +83,7 @@ public class AuthenticatorFileDAOTest {
     @Test
     public void testGetUser() throws IOException{
         // invoke
-        User result = assertDoesNotThrow(() -> dao.login("Gradono"), "getUser should not throw an exception");
+        User result = assertDoesNotThrow(() -> dao.login("Gradono", "h"), "getUser should not throw an exception");
 
         // analyze
         assertNotNull(result); // check that the user was found

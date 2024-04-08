@@ -1,0 +1,16 @@
+<app-navigation></app-navigation>
+
+<div *ngIf="username === 'admin'">
+  <h2> My Riddles</h2>
+
+  <app-riddle-form></app-riddle-form>
+
+  <ul class="riddles">
+    <li *ngFor="let riddle of riddles">
+      <a routerLink="/riddle/{{riddle.id}}">
+        <span class="badge">{{riddle.id}}</span> {{riddle.question}}
+      </a>
+      <button class="delete" title="delete riddle" (click)="delete(riddle)">x</button>
+    </li>
+  </ul>
+</div>

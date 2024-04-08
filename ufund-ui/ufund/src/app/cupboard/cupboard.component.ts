@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 import { Need } from '../need';
-import { NEEDS } from '../mock-needs';
 import { NeedService } from '../need.service';
 import { MessageService } from '../message.service';
 import { UserService } from '../user.service';
 import { HelperService } from '../helper.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cupboard',
@@ -13,9 +13,9 @@ import { HelperService } from '../helper.service';
   styleUrl: './cupboard.component.css'
 })
 export class CupboardComponent {
-  constructor(private needService: NeedService, private messageService: MessageService, public userService: UserService, private helperService: HelperService) {}
+  constructor(private needService: NeedService, private messageService: MessageService, public userService: UserService, private helperService: HelperService, private router : Router) {}
   needs: Need[] = [];
-  username: string = '';
+  username: string = sessionStorage.getItem('user') || "";
 
   getNeeds(): void {
     this.needService.getNeeds()
@@ -23,8 +23,11 @@ export class CupboardComponent {
   }
 
   ngOnInit() {
-    this.username = this.userService.loginObj.username;
-    this.getNeeds();
+    if (this.username === '') {
+      this.router.navigate(['/login']);
+    } else {
+      this.getNeeds();
+    }
   }
 
   add (name: string, price: number, quantity: number): void {

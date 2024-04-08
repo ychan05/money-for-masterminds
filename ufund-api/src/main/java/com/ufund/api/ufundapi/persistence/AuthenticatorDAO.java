@@ -15,7 +15,7 @@ public interface AuthenticatorDAO {
      * @return User that logged in
      * @throws IOException if issue with underlying storage
      */
-    User login(String username) throws IOException;
+    User login(String username, String password) throws IOException;
 
     /**
      * If username is not already a User, creates new account

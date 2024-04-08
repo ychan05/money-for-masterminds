@@ -8,6 +8,6 @@ import { Observable } from 'rxjs';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Money For Masterminds';
+  title = 'MONEY FOR MASTERMINDS';
   
 }
