@@ -1,15 +1,22 @@
 /* Application-wide Styles */
 @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
 
+@font-face {
+  font-family: "villainy";
+  src: url('assets/SuicideSupervillains-X334g.ttf');
+}
 h1 {
     color: #369;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "villainy";
     font-size: 250%;
   }
   h2, h3 {
-    color: #444;
-    font-family: Arial, Helvetica, sans-serif;
+    color: darkorange;
     font-weight: lighter;
+    font-family: "villainy";
+    -webkit-text-stroke: black;
+    -webkit-text-stroke-width: 1px;
+    text-shadow: 1px 2px rgb(0, 0, 0, 0.6);
   }
   body {
     margin: 2em;
@@ -19,8 +26,8 @@ h1 {
     font-family: Cambria, Georgia, serif;
   }
   button {
-    background-color: #eee;
-    border: none;
+    background-color: darkorange;
+    border: solid black 1px !important;
     border-radius: 4px;
     cursor: pointer;
     color: black;
@@ -31,13 +38,17 @@ h1 {
     margin-top: 1rem;
   }
   button:hover {
-    background-color: black;
+    background-color: orange;
     color: white;
   }
   button:disabled {
     background-color: #eee;
     color: #aaa;
     cursor: auto;
+  }
+  #main-body{
+    /*background-image: url(https://as2.ftcdn.net/v2/jpg/01/82/34/57/1000_F_182345750_1vHOQNEmCVuXli9peuUEsDhZU5QRyzuq.jpg);*/
+    background-color: lightgray;
   }
   
   /* everywhere else */
