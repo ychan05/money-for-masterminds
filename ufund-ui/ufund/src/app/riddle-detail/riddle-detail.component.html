@@ -1,0 +1,16 @@
+<div *ngIf="riddle && username === 'admin'">
+
+    <h2>{{riddle.question | uppercase}}</h2>
+    <div><span>id: </span>{{riddle.id}}</div>
+    <div>
+        <label for="riddle-question">Riddle question: </label>
+        <input id="riddle-question" [(ngModel)]="riddle.question" placeholder="question">
+        <br>
+        <label for="riddle-answer">Riddle answer:</label>
+        <input id="riddle-answer" [(ngModel)]="riddle.answer" placeholder="answer">
+    </div>
+
+    <button (click)="goBack()">Back</button>
+    <button type="button" (click)="save()">save</button>
+
+</div>

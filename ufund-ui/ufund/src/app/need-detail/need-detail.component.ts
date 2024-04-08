@@ -1,6 +1,6 @@
 import { Component, Input} from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Need } from '../need';
 import { NeedService } from '../need.service';
@@ -13,18 +13,21 @@ import { HelperService } from '../helper.service';
   styleUrl: './need-detail.component.css'
 })
 export class NeedDetailComponent {
-  username: string = '';
+  username: string = sessionStorage.getItem('user') || "";
 
   constructor(
     private route: ActivatedRoute,
     private needService: NeedService,
     private location: Location,
     public userService: UserService,
-    public helperService: HelperService
+    public helperService: HelperService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.username = this.userService.loginObj.username;
+    if (this.username === '') {
+      this.router.navigate(['/login']);
+    }
     this.getNeed();
   }
 

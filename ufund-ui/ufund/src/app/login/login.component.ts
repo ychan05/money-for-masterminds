@@ -1,8 +1,11 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login, UserService } from '../user.service';
+import { RiddleService } from '../riddle.service';
+import { Riddle } from '../riddle';
+import { Observable, map } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -15,13 +18,35 @@ export class LoginComponent {
   username: string;
   password: string;
   newUser: Login;
-  constructor(public userService: UserService){
+  userAnswer: string;
+  riddle: Riddle;
+  constructor(public userService: UserService, public riddleService: RiddleService, private router: Router){
+    this.getRandomRiddle();
     this.newUser = new Login();
     this.username = "";
     this.password = "";
+    this.userAnswer = "";
+    this.riddle = new Riddle(0, "", "");
   }
 
-  onLogIn(username: string, password: string){
+  ngOnInit() {
+    if (sessionStorage.getItem('user') !== null && sessionStorage.getItem('user') !== '') {
+      this.router.navigate(['/dashboard']);
+    }
+  }
+
+
+  getRandomRiddle(): void {
+    this.riddleService.getRandomRiddle().subscribe(riddle => this.riddle = riddle);
+  }
+  
+  onLogIn(username: string, password: string, userAnswer: string){
+    userAnswer = userAnswer.toLowerCase().replace(/\s/g, '').replace(/[^a-zA-Z0-9]/g, '');
+    const actualAnswer = this.riddle.answer.toLowerCase().replace(/\s/g, '').replace(/[^a-zA-Z0-9]/g, '');
+    if (userAnswer != actualAnswer){
+      alert("Incorrect answer to riddle");
+      return;
+    }
     this.userService.login(username, password);
   }
 

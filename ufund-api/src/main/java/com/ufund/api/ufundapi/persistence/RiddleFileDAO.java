@@ -8,11 +8,13 @@ import java.util.TreeMap;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ufund.api.ufundapi.model.Need;
 import com.ufund.api.ufundapi.model.Riddle;
 
+@Component
 public class RiddleFileDAO implements RiddleDAO {
     private static final Logger LOG = Logger.getLogger(CupboardFileDAO.class.getName());
     Map<Integer,Riddle> riddles;   // Provides a local cache of the riddle objects
@@ -175,7 +177,7 @@ public class RiddleFileDAO implements RiddleDAO {
      * {@inheritDoc}
      */
     @Override
-    public Riddle[] findRiddles(String containsText) {
+    public Riddle[] findRiddles(String containsText) throws IOException {
         synchronized(riddles){
             return getRiddlesArray(containsText);
         }
@@ -210,5 +212,19 @@ public class RiddleFileDAO implements RiddleDAO {
             riddleArrayList.toArray(riddleArray);
             return riddleArray;
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Riddle getRandomRiddle() throws IOException {
+        synchronized(riddles){
+            if (riddles.isEmpty()) {
+                return null;
+            }
+            int randomIndex = (int)(Math.random() * riddles.size());
+            return (Riddle) riddles.values().toArray()[randomIndex];
+        } 
     }
 }
