@@ -55,6 +55,7 @@ public class RiddleTest {
 
         // analyze
         assertEquals(expected_answer, riddle.getAnswer());
+    }
 
     @Test
     public void testRiddleConstructorWithId() {
@@ -88,6 +89,7 @@ public class RiddleTest {
         assertEquals(newId, riddle.getId());
         assertEquals(newQuestion, riddle.getQuestion());
         assertEquals(newAnswer, riddle.getAnswer());
+    }
 
     @Test
     public void testToString() {
