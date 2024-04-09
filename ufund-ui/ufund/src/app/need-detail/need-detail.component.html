@@ -20,9 +20,16 @@
         <label for="need-price">Need price:</label>
         {{need.price}}
         <br>
-        <label for="need-quantity">Need quantity: </label>
-        {{need.quantity}}
-        <br>
+        <div *ngIf="need.quantity > 0;">
+            <label for="need-quantity">Need quantity: </label>
+            {{need.quantity}}
+            <br>
+        </div>
+        <div *ngIf="need.quantity === 0;">
+            <label for="need-quantity">Need quantity: </label>
+            <span style="color: red;"> fulfilled</span>
+            <br>
+        </div>
     </ng-template>
 
 
@@ -33,5 +40,7 @@
 
     <div *ngIf="username != 'admin'">
         <button (click)="goBack()">Back</button>
-        <button type="button" (click)="addToFundingBasket(username, need.id)">add to basket</button>
+        <div *ngIf="need.quantity > 0;">
+            <button type="button" (click)="addToFundingBasket(username, need.id)">add to basket</button>
+        </div>
     </div>

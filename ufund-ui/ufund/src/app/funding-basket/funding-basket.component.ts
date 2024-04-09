@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrl: './funding-basket.component.css'
 })
 export class FundingBasketComponent {
-  constructor(private helperService : HelperService, private messageService : MessageService, public userService: UserService, private router : Router) {}
+  constructor(private helperService : HelperService, private messageService : MessageService, public userService: UserService, private router: Router) {}
 
   username : string = sessionStorage.getItem('user') || "";
 
@@ -35,5 +35,27 @@ export class FundingBasketComponent {
   delete(username: string, needId: number) {
     this.fundingBasket = this.fundingBasket.filter(n => n.id !== needId);
     this.helperService.removeFromFundingBasket(username, needId).subscribe();
+  }
+
+  checkout(): void {
+    if (this.fundingBasket.length === 0) {
+      alert('Your funding basket is empty. There is nothing to checkout.');
+      return;
+    }
+
+    const checkoutConfirmed = window.confirm('Are you sure you want to checkout the needs in your funding basket?');
+
+    if (checkoutConfirmed) {
+      this.helperService.checkoutNeeds(this.username).subscribe(
+        () => {
+          alert('Checkout successful!');
+          this.fundingBasket = [];
+        },
+        (error) => {
+          console.error('Error during checkout:', error);
+          alert('Error during checkout. Please try again later.');
+        }
+      );
+    }
   }
 }

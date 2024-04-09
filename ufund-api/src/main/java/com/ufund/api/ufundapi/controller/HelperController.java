@@ -107,4 +107,25 @@ public class HelperController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while adding need to funding basket");
         }
     }
+
+    @PostMapping("/checkout/{username}")
+    public ResponseEntity<?> checkoutNeeds(@PathVariable String username) {
+        LOG.info("POST /checkout/" + username);
+
+        try {
+            // Get the user by username
+            User user = helperDAO.getUser(username);
+
+            // Perform the CUPBOARD checkout process first
+            cupboardDAO.checkoutNeeds(user);
+
+            // Perform the HELPER checkout process second
+            helperDAO.checkoutNeeds(user);
+
+            // Return a response with HTTP status of OK informing user that checkout was successful
+            return ResponseEntity.ok("Checkout successful for user " + username);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error during checkout: " + e.getMessage());
+        }
+    }
 }

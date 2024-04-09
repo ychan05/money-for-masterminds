@@ -151,4 +151,12 @@ public class HelperFileDAO implements HelperDAO {
         }
         return null;
     }
+
+    @Override
+    public void checkoutNeeds(User user) throws IOException {
+        if (user != null) {
+            user.checkout();
+            save();
+        }
+    }
 }

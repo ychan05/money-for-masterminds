@@ -1,6 +1,7 @@
 package com.ufund.api.ufundapi.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -54,5 +55,20 @@ public class UserTest {
 
         // analyze
         assertEquals(expected_string, actual_string);
+    }
+
+    @Test
+    public void testCheckout() {
+        // setup
+        User user = new User("Gradono");
+        Need need = new Need("Food", 10.0, 1);
+        user.addToBasket(need);
+
+        // invoke
+        user.checkout();
+        Set<Need> basket = user.getBasket();
+
+        // analyze
+        assertEquals(0, basket.size());
     }
 }

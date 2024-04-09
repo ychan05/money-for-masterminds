@@ -54,6 +54,16 @@ export class HelperService {
     );
   }
 
+  /** POST: perform checkout operation */
+  checkoutNeeds(username: string): Observable<any> {
+    const url = `${this.helperUrl}/checkout/${username}`;
+    
+    return this.http.post(url, this.httpOptions, { responseType: 'text' }).pipe(
+      tap(() => this.log(`checkout successful for user ${username}`)),
+      catchError(this.handleError<any>('checkoutNeeds'))
+    );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
@@ -64,13 +74,4 @@ export class HelperService {
       return of(result as T);
     };
   }
-
-  reconnectToApi(): Observable<any> {
-    return this.http.get<any>(this.helperUrl, this.httpOptions)
-      .pipe(
-        tap(_ => this.log('reconnected to API')),
-        catchError(this.handleError<any>('reconnectToApi', []))
-      );
-  }
 }
-
