@@ -15,7 +15,7 @@
 <ul class="cupboard">
   <li *ngFor="let need of needs">
     <a routerLink="/detail/{{need.id}}">
-      <span class="badge">{{need.id}}</span> {{need.name}}
+      <span class="badge">{{need.id}}</span> <span class="name">{{need.name}}</span>
     </a>
     <div *ngIf="username === 'admin'; else elseBlock">
       <button class="delete" title="delete need" (click)="delete(need)">x</button>

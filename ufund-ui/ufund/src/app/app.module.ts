@@ -14,6 +14,9 @@ import { LoginComponent } from './login/login.component';
 import { FundingBasketComponent } from './funding-basket/funding-basket.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { RiddleDetailComponent } from './riddle-detail/riddle-detail.component';
+import { RiddlesComponent } from './riddles/riddles.component';
+import { RiddleFormComponent } from './riddle-form/riddle-form.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
     FundingBasketComponent,
     NavigationComponent,
     ConfirmationComponent,
+    RiddleDetailComponent,
+    RiddlesComponent,
+    RiddleFormComponent,
   ],
   imports: [
     BrowserModule,

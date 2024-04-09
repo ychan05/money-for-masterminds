@@ -18,13 +18,15 @@ public class User {
 
     @JsonProperty("username") private String username;
     @JsonProperty("basket") private Set<Need> basket;
+    @JsonProperty("password") private String password;
 
     /**
      * Create a User with the given username, and an empty funding basket
      * @param username The username of the User
      */
-    public User(@JsonProperty("username") String username){
+    public User(@JsonProperty("username") String username, @JsonProperty("password") String password){
         this.username = username;
+        this.password = password;
         basket = new HashSet<>();
     }
 
@@ -39,6 +41,18 @@ public class User {
      * @param username The username of the user
      */
     public void setUsername(String username) {this.username = username;}
+
+    /**
+         * Retrieves the password of the User
+         * @return the password of the User
+         */
+    public String getPassword() {return password;}
+
+    /**
+         * Sets the password of the User
+         * @param username The password of the user
+         */
+        public void setPassword(String password) {this.password = password;}
 
     /**
      * Retrieves the funding basket of the User

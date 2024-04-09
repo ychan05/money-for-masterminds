@@ -4,7 +4,7 @@
 <ul class="funding-basket">
   <li *ngFor="let need of fundingBasket">
     <a routerLink="/detail/{{need.id}}">
-      <span class="badge">{{need.id}}</span> {{need.name}}
+      <span class="badge">{{need.id}}</span> <span class="name">{{need.name}}</span>
     </a>
     <button class="delete" title="delete need" (click)="delete(username, need.id)">x</button>
   </li>

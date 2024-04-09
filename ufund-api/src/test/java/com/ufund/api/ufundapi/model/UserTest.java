@@ -20,9 +20,10 @@ public class UserTest {
     public void testCtor() {
         // setup
         String expected_name = "Gradono";
+        String expected_password = "h";
 
         // invoke
-        User user = new User(expected_name);
+        User user = new User(expected_name, expected_password);
 
         // analyze
         assertEquals(expected_name, user.getUsername());
@@ -31,7 +32,7 @@ public class UserTest {
     @Test
     public void testName(){
         // setup
-        User user = new User("Gradono");
+        User user = new User("Gradono", "h");
 
         String expected_name = "Bill";
 
@@ -47,7 +48,7 @@ public class UserTest {
         // setup
         String username = "Gradono";
         String expected_string = String.format(User.STRING_FORMAT, username);
-        User user = new User(username);
+        User user = new User(username, "h");
 
         // invoke
         String actual_string = user.toString();

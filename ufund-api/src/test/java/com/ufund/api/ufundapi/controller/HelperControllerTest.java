@@ -42,7 +42,7 @@ public class HelperControllerTest {
     @Test
     public void testGetFundingBasket() throws IOException {
         // setup
-        User user = new User("testUser");
+        User user = new User("testUser", "h");
         
         // simulate success
         when(dao.getFundingBasket(user)).thenReturn(new HashSet<Need>());
@@ -57,7 +57,7 @@ public class HelperControllerTest {
     @Test
     public void testAddToFundingBasket() throws IOException {
         // setup
-        User user = new User("testUser");
+        User user = new User("testUser", "h");
         Need need = new Need(1, "test", 10, 10);
         
         // simulate success
@@ -70,7 +70,7 @@ public class HelperControllerTest {
     @Test
     public void testRemoveFromFundingBasket() throws IOException {
         // setup
-        User user = new User("testUser");
+        User user = new User("testUser", "h");
         Need need = new Need(1, "test", 10, 10);
         
         // simulate success

@@ -35,14 +35,16 @@ export class UserService {
 
   // WILL PROBABLY NEED TO BE REWORKED A LITTLE BUT THIS WILL WORK FOR NOW
   // TO-DO: ADD MANAGER AND HELPER URLS
-  login(username: string){
-    const url = `${this.authenticatorUrl}/${username}`;
+  login(username: string, password: string){
+    const url = `${this.authenticatorUrl}/${username}/${password}`;
     this.http.get<Login>(url).subscribe({
       next: data => {
         alert("Login success");
         console.log(data);
         this.loginObj.username = username;
+        this.loginObj.password = password;
         this.loginObj.basket = data.basket;
+        sessionStorage.setItem('user', username);
         this.nav = new NavigationComponent(this);
         this.router.navigateByUrl("/dashboard");
       },
@@ -64,12 +66,19 @@ export class UserService {
     });
   }
 
+  logout() {
+    sessionStorage.removeItem('user');
+    this.router.navigateByUrl("/login");
+  }
+
 }
 export class Login {
   username: string; 
+  password: string;
   basket: Array<Need>;
   constructor() {
     this.username = '';
     this.basket = [];
+    this.password = '';
   }
 }
