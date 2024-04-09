@@ -8,7 +8,7 @@
   <ul class="riddles">
     <li *ngFor="let riddle of riddles">
       <a routerLink="/riddle/{{riddle.id}}">
-        <span class="badge">{{riddle.id}}</span> {{riddle.question}}
+        <span class="badge">{{riddle.id}}</span> <span class="question"> {{riddle.question.length > 17 ? (riddle.question | slice:0:17) + '...' : riddle.question}}</span>
       </a>
       <button class="delete" title="delete riddle" (click)="delete(riddle)">x</button>
     </li>

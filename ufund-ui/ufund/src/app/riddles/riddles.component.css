@@ -1,0 +1,105 @@
+.riddles {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 15em;
+  }
+  
+  input {
+    display: block;
+    width: 100%;
+    padding: .5rem;
+    margin: 1rem 0;
+    box-sizing: border-box;
+  }
+  
+  .riddles li {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .riddles li:hover {
+    left: .1em;
+  }
+  
+  .riddles a {
+    color: #333;
+    text-decoration: none;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em 0;
+    height: 1.6em;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+  }
+  
+  .riddles a:hover {
+    color: #2c3a41;
+    background-color: #e6e6e6;
+  }
+  
+  .riddles a:active {
+    background-color: #525252;
+    color: #fafafa;
+  }
+  
+  .riddles .badge {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 0.4em 0.7em 0 0.6em;
+    background-color: darkorange;
+    line-height: 1em;
+    position: relative;
+    left: -1px;
+    top: -4px;
+    height: 1.8em;
+    min-width: 16px;
+    text-align: right;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+  }
+  
+  .add-button {
+   padding: .5rem 1.5rem;
+   font-size: 1rem;
+   margin-bottom: 2rem;
+  }
+  
+  .add-button:hover {
+    color: white;
+    background-color: #42545C;
+  }
+  
+  button.delete {
+    position: absolute;
+    left: 210px;
+    top: 5px;
+    background-color: white;
+    color:  #525252;
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 1px 10px 3px 10px;
+  }
+  
+  button.delete:hover {
+    background-color: #525252;
+    color: white;
+  }
+  button.add-to-basket {
+    position: absolute;
+    left: 210px;
+    top: 5px;
+    background-color: white;
+    color:  #525252;
+    font-size: 1.1rem;
+    margin: 0;
+    padding: 1px 10px 3px 10px;
+  }
+  
+  .question{
+    position:absolute;
+    margin-top: -0.25em;
+    font-family: "villainy";
+  }

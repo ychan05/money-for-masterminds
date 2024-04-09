@@ -4,3 +4,9 @@
     -webkit-text-stroke-width: 1px;
     text-shadow: 1px 2px rgb(0, 0, 0, 0.6);
 }
+
+label{
+    color: white;
+    text-shadow: 1px 2px rgb(0, 0, 0, 1);
+    font-size: large;
+}
