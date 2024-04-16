@@ -17,6 +17,7 @@ geometry: margin=1in
 Currently, villains have been severely underfunded compared to heroes. At Money For Masterminds, we hope to lessen the financial disparities between through groups through a crowdfunding application. With our application, super villains will be able fund their evil schemes through the help of generous donors. 
 
 ### Purpose
+
 Money For Masterminds is a management system that allows super villains to put out a list of needs and have other people donate to those needs.
 
 ### Glossary and Acronyms
@@ -28,7 +29,7 @@ Money For Masterminds is a management system that allows super villains to put o
 | Need | Something that the villain needs funding for; an object, tool, scheme, etc. |
 | Cupboard | A list of Needs posted by a villain |
 | Funding Basket | A "shopping cart" full of Needs that a user intends on funding |
-| Manager | A villain/admin who has Needs and wants funding for their plans |
+| Manager | A super villain/admin who has Needs and wants funding for their plans |
 | Helper | A user who can fund a Manager's Needs |
 | Checkout | The process by which a Helper funds all the Needs in their Funding Basket |
 
@@ -36,24 +37,20 @@ Money For Masterminds is a management system that allows super villains to put o
 
 This section describes the features of the application.
 
-> _In this section you do not need to be exhaustive and list every
-> story.  Focus on top-level features from the Vision document and
-> maybe Epics and critical Stories._
-
 In Money for Masterminds, users are divided between Helpers and Managers.
 
-Managers are supervillains who can create a Cupboard and fill it with a list of Needs that they want to get funded by Helpers. Managers can edit the contents of their Cupboard as much as they want: they can add new Needs, delete old Needs, edit Needs, or update Needs.
+Managers are super villains who can create a Cupboard and fill it with a list of Needs that they want to get funded by Helpers. Managers can edit the contents of their Cupboard as much as they want: they can add new Needs, delete old Needs, edit Needs, or update Needs. Managers can also create and edit riddles to secure the page on the log-in process.
 
-Helpers are users that want to fund Managers/supervillains, which they can do by exploring a Cupboard and purchasing any Needs that they want. Helpers have access to their own Funding Basket, which they can use to checkout any Needs they've added from a Cupboard and officially fund those Needs. Helpers have the ability to add Needs to their Funding Basket, remove Needs from their basket, edit the quantity of a Need in their basket, and checkout those Needs once they're done shopping for Needs. Helpers can also search for specific Needs in villains' Cupboards, as well as choose from a list of popular or highly requested Needs.
+Helpers are users that want to fund Managers/super villains, which they can do by exploring a Cupboard and purchasing any Needs that they want. Helpers have access to their own Funding Basket, which they can use to checkout any Needs they've added from a Cupboard and officially fund those Needs. Helpers have the ability to add Needs to their Funding Basket, remove Needs from their basket, edit the quantity of a Need in their basket, and checkout those Needs once they're done shopping for Needs. Helpers can also search for specific Needs in the villain's Cupboard, as well as choose from a list of popular or highly requested Needs.
 
 Money for Masterminds also has a thorough authentication procedure so that all users can log into their accounts with a username, password, and a successfully solved riddle prompted to the user on the log-in page. There is also a log-out functionality so that users can exit their account after signing in.
 
 ### Definition of MVP
-A manager user is able to log in to the web app through the `admin` username. They are then able to add, remove, and edit needs in their cupboard as well as search for individual needs.  
+
+A manager user is able to log in to the web app through the `admin` username. They are then able to add, remove, and edit needs in their cupboard as well as search for individual needs.
 A helper user is able to sign up with and login to a unique username. They are able to search for needs and add and remove them from their funding basket.
 
 ### MVP Features
->  _**[Sprint 4]** Provide a list of top-level Epics and/or Stories of the MVP._
 
 EPICS
  - Authenticator: As a user I want to sign/log in so that I can access the site.
@@ -67,6 +64,20 @@ STORIES
  - Get Single Need: As a developer I want to submit a request to get a single need so that I can access the cost, quantity, and type.
  - Search for Needs: As a developer I want to submit a request to get the needs in the cupboard whose name contains the giveen text, so that I have access to only that subset of needs.
  - Update a Need: As a developer I want to submit a request to get the entire cupboard so that I have acceses to all of the needs for the organization.
+ - Add Need: As a manager I want to add needs to my plan so that helpers can fund them.
+ - Add Single Need: As a helper I want to add a need to my funding basket sos that I can keep track of the needs I want to contribute to.
+ - View Funding Basket: As a helper I want to view my funding basket so that I can make changes to it.
+ - Edit Need: As a helper I want to edit specific needs so that I can quickly change and make the need fit into its category.
+ - Delete Need: As a manager I want to be able to delete needs sos that I can keep my need list up to date when needs are fulfilled.
+ - Search for Needs: As a user I want to search for needs so that I can access a specific need.
+ - Sign-in: As a user I want to sign up so that I can have an account.
+ - Admin Access: As an admin I want to enter the admin password so that I can access the manager.
+ - Log In: As a user I want to log in with my account so that I can access the site.
+ - Password: As a developer I want to create a password so I can access the helper page more securely.
+ - Checkout Funding Baskete: As a helper I want to checkout my funding basket so that I can contribute to my selected needs.
+ - Riddles Login: As a user I want to solve riddles so that I can access my page more securely.
+ - Riddles Management: As a manager I want to manage riddles so that I can better secure my page.
+ - UI: As a user I want a better UI so that I can access the site with more ease.
 
 ### Enhancements
 > _**[Sprint 4]** Describe what enhancements you have implemented for the project._
