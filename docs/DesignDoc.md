@@ -54,6 +54,7 @@ A helper user is able to sign up with and login to a unique username. They are a
 
 ### MVP Features
 >  _**[Sprint 4]** Provide a list of top-level Epics and/or Stories of the MVP._
+
 EPICS
  - Authenticator: As a user I want to sign/log in so that I can access the site.
  - Manager: As a manager I want to manage my needs so that helpers will fund them.
