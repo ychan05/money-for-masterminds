@@ -80,8 +80,8 @@ STORIES
  - UI: As a user I want a better UI so that I can access the site with more ease.
 
 ### Enhancements
-> _**[Sprint 4]** Describe what enhancements you have implemented for the project._
 
+Money for Masterminds implements a 'riddles' enhancement. This creates an extra step in the log-in phase for users that prompts them with a difficult riddle, increasing security for the website. If the user correctly answers the riddle (in addition to their username and password), only then can they access the website. Managers are also able to create and edit riddles to their liking sos they can better secure their page.
 
 ## Application Domain
 
