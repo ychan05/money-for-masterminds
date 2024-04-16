@@ -27,8 +27,8 @@ Money For Masterminds is a management system that allows super villains to put o
 | SPA | Single Page |
 | Need | Something that the villain needs funding for; an object, tool, scheme, etc. |
 | Cupboard | A list of Needs posted by a villain |
-| Funding Basket | A "shopping cart" full of Needs that a user would like to fund |
-| Manager | A villain who has Needs they want to be funded |
+| Funding Basket | A "shopping cart" full of Needs that a user intends on funding |
+| Manager | A villain/admin who has Needs and wants funding for their plans |
 | Helper | A user who can fund a Manager's Needs |
 
 ## Requirements
