@@ -21,7 +21,6 @@ Currently, villains have been severely underfunded compared to heroes. At Money 
 Money For Masterminds is a management system that allows super villains to put out a list of needs and have other people donate to those needs.
 
 ### Glossary and Acronyms
-> _**[Sprint 2 & 4]** Provide a table of terms and acronyms._
 
 | Term | Definition |
 |------|------------|
@@ -34,8 +33,6 @@ Money For Masterminds is a management system that allows super villains to put o
 | Checkout | The process by which a Helper funds all the Needs in their Funding Basket |
 
 ## Requirements
-
-This section describes the features of the application.
 
 In Money for Masterminds, users are divided between Helpers and Managers.
 
