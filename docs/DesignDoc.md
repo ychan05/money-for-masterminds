@@ -46,7 +46,7 @@ Managers are supervillains who can create a Cupboard and fill it with a list of 
 
 Helpers are users that want to fund Managers/supervillains by exploring a Cupboard and purchasing any Needs that they want. Helpers have access to their Funding Basket, which they can use to checkout any Needs they've added and officially fund those Needs. Helpers have the ability to add Needs to their Funding Basket, remove Needs from their basket, edit the quantity of a Need in their basket, and checkout those Needs once they're done shopping for Needs. Money for Masterminds also grants Helpers the ability to search for specific Needs in villains' Cupboards, as well as choose from a list of popular, important Needs.
 
-Money for Masterminds also has a thorough authentication procedure so that all users can log into their accounts with a username, password, and a successfully solved riddle prompted to the user on the log-in page.
+Money for Masterminds also has a thorough authentication procedure so that all users can log into their accounts with a username, password, and a successfully solved riddle prompted to the user on the log-in page. There is also a log-out functionality so that users can exit their account after signing in.
 
 ### Definition of MVP
 A manager user is able to log in to the web app through the `admin` username. They are then able to add, remove, and edit needs in their cupboard as well as search for individual needs.  
