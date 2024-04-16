@@ -30,6 +30,7 @@ Money For Masterminds is a management system that allows super villains to put o
 | Funding Basket | A "shopping cart" full of Needs that a user intends on funding |
 | Manager | A villain/admin who has Needs and wants funding for their plans |
 | Helper | A user who can fund a Manager's Needs |
+| Checkout | The process by which a Helper funds all the Needs in their Funding Basket |
 
 ## Requirements
 
