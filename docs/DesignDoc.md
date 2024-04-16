@@ -25,7 +25,8 @@ Money For Masterminds is a management system that allows super villains to put o
 | Term | Definition |
 |------|------------|
 | SPA | Single Page |
-
+|------|------------|
+| Need | Something that the villain wants to be funded |
 
 ## Requirements
 
