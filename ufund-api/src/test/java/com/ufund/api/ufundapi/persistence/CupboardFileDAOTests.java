@@ -138,7 +138,7 @@ public class CupboardFileDAOTests {
     @Test
     public void testCheckoutNeeds() throws IOException {
         // setup
-        User user = new User("Gradono");
+        User user = new User("Gradono", "h");
         user.addToBasket(testNeeds[0]);
         int initialQuantity = testNeeds[0].getQuantity();
 
