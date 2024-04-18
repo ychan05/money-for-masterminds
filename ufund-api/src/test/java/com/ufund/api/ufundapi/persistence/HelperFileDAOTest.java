@@ -96,7 +96,7 @@ public class HelperFileDAOTest {
 
     @Test
     public void testCheckoutNeeds() throws IOException {
-        User user = new User("testUser");
+        User user = new User("testUser", "h");
         Need need = new Need("test", 10, 10);
         user.addToBasket(need);
 

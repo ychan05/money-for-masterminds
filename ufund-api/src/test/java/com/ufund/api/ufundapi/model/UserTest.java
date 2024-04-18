@@ -60,7 +60,7 @@ public class UserTest {
     @Test
     public void testCheckout() {
         // setup
-        User user = new User("Gradono");
+        User user = new User("Gradono", "h");
         Need need = new Need("Food", 10.0, 1);
         user.addToBasket(need);
 
