@@ -204,11 +204,6 @@ to the immediate coupling, enhancing the maintainability and flexibility of the 
 **The Controller:** The controllerprinciple is saying that the thing responsible for handling system operations should be a separate class. They are like a mediator between the user interface and logic which increase the flow of information. It is a non-user interface responsible to receive or handle an event.
 
 
-
-> _**[Sprint 2, 3 & 4]** Will eventually address upto **4 key OO Principles** in your final design. Follow guidance in augmenting those completed in previous Sprints as indicated to you by instructor. Be sure to include any diagrams (or clearly refer to ones elsewhere in your Tier sections above) to support your claims._
-
-> _**[Sprint 3 & 4]** OO Design Principles should span across **all tiers.**_
-
 ## Static Code Analysis/Future Design Improvements
 > _**[Sprint 4]** With the results from the Static Code Analysis exercise, 
 > **Identify 3-4** areas within your code that have been flagged by the Static Code 
@@ -222,11 +217,6 @@ to the immediate coupling, enhancing the maintainability and flexibility of the 
 > and the results of the testing._
 
 ### Acceptance Testing
-> _**[Sprint 2 & 4]** Report on the number of user stories that have passed all their
-> acceptance criteria tests, the number that have some acceptance
-> criteria tests failing, and the number of user stories that
-> have not had any testing yet. Highlight the issues found during
-> acceptance testing and if there are any concerns._
 
 User stories that passed their acceptance criteria tests: 13
 
@@ -242,11 +232,16 @@ No issues with acceptance criteria testing. All fully implemented user stories p
 > coverage targets, why you selected those values, and how well your
 > code coverage met your targets._
 
+Our unit testing strategy consisted of looking at the design of a feature implementation and looking at all the moving pieces involved in that functionality. We looked at any variables, function calls, or moving parts of code that changed anything, created anything, deleted anything, etc. Then, we created tests around those moving parts with trials that would mimic that functionality and make sure that the code was actually completing whatever functionality it was supposed to be performing. If the trial turned out equal to the actual implemented function calls, then it was working as intended and the test passed.
+
 ![Code Coverage](code-coverage.png)
 
 ## Ongoing Rationale
 
 (2024/02/09): The team decided on our Sprint 1 plan and documentation. We completed the set-up for the project so that we could begin our trajectory for the semester project and start off on the right foot.
+
 (2024/02/22): The team decided on our Sprint 2 plan. We completed the first sprint and decided what we would need to implement next so that we could get the functionality needed for UI design completed.
+
 (2024/03/20): The team decided on our Sprint 3 plan. We completed the second sprint and decided how we would start making major UI design changes and implement our next features.
+
 (2024/04/09): The team decided on our Sprint 4 plan. We decided how we would implement final UI and feature functionality so that our project would stand out.
