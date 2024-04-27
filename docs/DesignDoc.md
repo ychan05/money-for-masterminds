@@ -201,12 +201,24 @@ to the immediate coupling, enhancing the maintainability and flexibility of the 
 
 
 ## Static Code Analysis/Future Design Improvements
-> _**[Sprint 4]** With the results from the Static Code Analysis exercise, 
-> **Identify 3-4** areas within your code that have been flagged by the Static Code 
-> Analysis Tool (SonarQube) and provide your analysis and recommendations.  
-> Include any relevant screenshot(s) with each area._
+### Angular
+Remove any unused functions
+![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/298074e7-5d0e-4621-a127-9ad8891f7d4f)
+![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/9074fd47-d440-4c22-8065-0a9a5d17612c)
 
-> _**[Sprint 4]** Discuss **future** refactoring and other design improvements your team would explore if the team had additional time._
+Remove any unused imports
+![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/555c63cb-db10-4026-b85b-c9ceb87c99ad)
+
+### Java
+Assign correct level of visibility to classes
+![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/39c4ebf7-94db-4fa2-8839-c0016e46aa27)
+
+Ensure pseudorandom generator is safe to use
+![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/7355ffc7-bbf7-480d-8327-d455a2719039)
+
+
+
+We can refactor our css files to include generic font families. We could also ensure that any unsued imports, classes, or functions are removed from our project. 
 
 ## Testing
 
