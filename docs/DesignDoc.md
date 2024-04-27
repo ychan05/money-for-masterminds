@@ -122,10 +122,13 @@ The manager UI includes similar tabs to the helper, but the main difference is t
 
 
 ### View Tier
-> _**[Sprint 4]** Provide a summary of the View Tier UI of your architecture.
-> Describe the types of components in the tier and describe their
-> responsibilities.  This should be a narrative description, i.e. it has
-> a flow or "story line" that the reader can follow._
+
+In the view tier's checkout process, users review their selected items, enter shipping and payment details, and confirm their purchase. This phase ensures a seamless and efficient transaction, guiding users through the final steps of their shopping journey.
+![Checkout Sequence](Checkoutseq.png)
+CheckoutNeeds(user) prompted to Cupboard first, then Funding Basket.
+If the funding basket is already empty, then it will fail and won't execute checkout. Otherwise, it will update the database, as well as check out the remaining items in the funding basket.
+
+![Manager Sequence](ManagerSeq.png)
 
 > _**[Sprint 4]** You must  provide at least **2 sequence diagrams** as is relevant to a particular aspects 
 > of the design that you are describing.  (**For example**, in a shopping experience application you might create a 
