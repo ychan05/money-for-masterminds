@@ -243,4 +243,8 @@ No issues with acceptance criteria testing. All fully implemented user stories p
 ![Code Coverage](code-coverage.png)
 
 ## Ongoing Rationale
->_**[Sprint 1, 2, 3 & 4]** Throughout the project, provide a time stamp **(yyyy/mm/dd): Sprint # and description** of any _**major**_ team decisions or design milestones/changes and corresponding justification._
+
+(2024/02/09): The team decided on our Sprint 1 plan and documentation. We completed the set-up for the project so that we could begin our trajectory for the semester project and start off on the right foot.
+(2024/02/22): The team decided on our Sprint 2 plan. We completed the first sprint and decided what we would need to implement next so that we could get the functionality needed for UI design completed.
+(2024/03/20): The team decided on our Sprint 3 plan. We completed the second sprint and decided how we would start making major UI design changes and implement our next features.
+(2024/04/09): The team decided on our Sprint 4 plan. We decided how we would implement final UI and feature functionality so that our project would stand out.
