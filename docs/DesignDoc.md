@@ -213,8 +213,6 @@ to the immediate coupling, enhancing the maintainability and flexibility of the 
 > _**[Sprint 4]** Discuss **future** refactoring and other design improvements your team would explore if the team had additional time._
 
 ## Testing
-> _This section will provide information about the testing performed
-> and the results of the testing._
 
 ### Acceptance Testing
 
