@@ -98,8 +98,6 @@ This section describes the application architecture.
 ### Summary
 
 The following Tiers/Layers model shows a high-level view of the webapp's architecture. 
-**NOTE**: detailed diagrams are required in later sections of this document.
-> _**[Sprint 1]** (Augment this diagram with your **own** rendition and representations of sample system classes, placing them into the appropriate M/V/VM (orange rectangle) tier section. Focus on what is currently required to support **Sprint 1 - Demo requirements**. Make sure to describe your design choices in the corresponding _**Tier Section**_ and also in the _**OO Design Principles**_ section below.)_
 
 ![The Tiers & Layers of the Architecture](architecture-tiers-and-layers.png)
 
@@ -116,7 +114,11 @@ Both the ViewModel and Model are built using Java and Spring Framework. Details 
 
 This section describes the web interface flow; this is how the user views and interacts with the web application.
 
-> _Provide a summary of the application's user interface.  Describe, from the user's perspective, the flow of the pages in the web application._
+The application's user interface effectively boils down into 2 sections: the helper's UI, and the manager's UI.
+
+The helper UI includes 4 tabs/buttons that they can click between at the top of the page to navigate between the basic directories of the page. The user can traverse to the manager's cupboard, where they can click on a need to see more information about that need, and they can add a need to their funding basket. The helper can view their funding basket and click on needs in their funding basket to view them and any information about that need. The helper can checkout their funding basket with the checkout button at the button of the funding basket page. On the hom epage, the helper can search for needs and click on any found needs from the search bar, or navigate to popular needs.
+
+The manager UI includes similar tabs to the helper, but the main difference is that the manager does not have a funding basket, and instead has their cupboard tab. On the cupboard page, the manager can view their needs. They can also view their riddles. On the cupboard page, they can edit needs, add needs, or delete needs directly on the page by clicking on an 'x' button hovering over existing needs, click on the need directly to edit it, or fill out a form in the center of the page to fill in information about a new need they would like to publish on their cupboard page.
 
 
 ### View Tier
