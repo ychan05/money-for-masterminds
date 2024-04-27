@@ -227,12 +227,6 @@ User stories without any acceptance criteria testing: 1
 No issues with acceptance criteria testing. All fully implemented user stories pass their acceptance criteria tests. 
 
 ### Unit Testing and Code Coverage
-> _**[Sprint 4]** Discuss your unit testing strategy. Report on the code coverage
-> achieved from unit testing of the code base. Discuss the team's
-> coverage targets, why you selected those values, and how well your
-> code coverage met your targets._
-
-Our unit testing strategy consisted of looking at the design of a feature implementation and looking at all the moving pieces involved in that functionality. We looked at any variables, function calls, or moving parts of code that changed anything, created anything, deleted anything, etc. Then, we created tests around those moving parts with trials that would mimic that functionality and make sure that the code was actually completing whatever functionality it was supposed to be performing. If the trial turned out equal to the actual implemented function calls, then it was working as intended and the test passed.
 
 ![Code Coverage](code-coverage.png)
 
