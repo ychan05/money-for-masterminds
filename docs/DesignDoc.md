@@ -116,7 +116,7 @@ This section describes the web interface flow; this is how the user views and in
 
 The application's user interface effectively boils down into 2 sections: the helper's UI, and the manager's UI.
 
-The helper UI includes 4 tabs/buttons that they can click between at the top of the page to navigate between the basic directories of the page. The user can traverse to the manager's cupboard, where they can click on a need to see more information about that need, and they can add a need to their funding basket. The helper can view their funding basket and click on needs in their funding basket to view them and any information about that need. The helper can checkout their funding basket with the checkout button at the button of the funding basket page. On the hom epage, the helper can search for needs and click on any found needs from the search bar, or navigate to popular needs.
+The helper UI includes 4 tabs/buttons that they can click between at the top of the page to navigate between the basic directories of the page. The user can traverse to the manager's cupboard, where they can click on a need to see more information about that need, and they can add a need to their funding basket. The helper can view their funding basket and click on needs in their funding basket to view them and any information about that need. The helper can checkout their funding basket with the checkout button at the button of the funding basket page. On the home page, the helper can search for needs and click on any found needs from the search bar, or navigate to popular needs.
 
 The manager UI includes similar tabs to the helper, but the main difference is that the manager does not have a funding basket, and instead has their cupboard tab. On the cupboard page, the manager can view their needs. They can also view their riddles. On the cupboard page, they can edit needs, add needs, or delete needs directly on the page by clicking on an 'x' button hovering over existing needs, click on the need directly to edit it, or fill out a form in the center of the page to fill in information about a new need they would like to publish on their cupboard page.
 
@@ -158,13 +158,6 @@ CupboardController: Used to handle HTTP requests to the API.
 Need: Object representation of a need.  
 CupboardFileDAO: Used to interact with the file storage system and perform CRUD operations on Need objects.
 
-> _**[Sprint 2, 3 & 4]** Provide a summary of this tier of your architecture. This
-> section will follow the same instructions that are given for the View
-> Tier above._
-
-> _At appropriate places as part of this narrative provide **one** or more updated and **properly labeled**
-> static models (UML class diagrams) with some details such as critical attributes and methods._
-> 
 ![Replace with your Model Tier class diagram 1, etc.](model-1.png)
 ![Replace with your Model Tier class diagram 1, etc.](model-2.png)
 
