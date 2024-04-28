@@ -128,24 +128,16 @@ The manager UI includes similar tabs to the helper, but the main difference is t
 
 ### View Tier
 
+In the view tier's login process, users can create an account with a username and password. Then, they can enter the login information and solve a riddle to be directed to their account dashboards and gain access to their functionalities.
+
+
 In the view tier's checkout process, users review their selected items, enter shipping and payment details, and confirm their purchase. This phase ensures a seamless and efficient transaction, guiding users through the final steps of their shopping journey.
 ![Checkout Sequence](Checkoutseq.png)
 CheckoutNeeds(user) prompted to Cupboard first, then Funding Basket.
 If the funding basket is already empty, then it will fail and won't execute checkout. Otherwise, it will update the database, as well as check out the remaining items in the funding basket.
 
+The manager can access a list of all the needs and riddles, can update each need or riddle and save them. Managers will also be able to remove and add needs and riddles.
 ![Manager Sequence](ManagerSeq.png)
-
-> _**[Sprint 4]** You must  provide at least **2 sequence diagrams** as is relevant to a particular aspects 
-> of the design that you are describing.  (**For example**, in a shopping experience application you might create a 
-> sequence diagram of a customer searching for an item and adding to their cart.)
-> As these can span multiple tiers, be sure to include an relevant HTTP requests from the client-side to the server-side 
-> to help illustrate the end-to-end flow._
-
-> _**[Sprint 4]** To adequately show your system, you will need to present the **class diagrams** where relevant in your design. Some additional tips:_
- >* _Class diagrams only apply to the **ViewModel** and **Model** Tier_
->* _A single class diagram of the entire system will not be effective. You may start with one, but will be need to break it down into smaller sections to account for requirements of each of the Tier static models below._
- >* _Correct labeling of relationships with proper notation for the relationship type, multiplicities, and navigation information will be important._
- >* _Include other details such as attributes and method signatures that you think are needed to support the level of detail in your discussion._
 
 ### ViewModel Tier
 This tier is used to handle any API requests regarding needs, riddles, and user authentication or creation.
@@ -241,11 +233,11 @@ We can refactor our CSS files to include generic font families. We could also en
 
 ### Acceptance Testing
 
-User stories that passed their acceptance criteria tests: 13
+User stories that passed their acceptance criteria tests: 23
 
 User stories with some acceptance criteria tests failing: 0
 
-User stories without any acceptance criteria testing: 1
+User stories without any acceptance criteria testing: 0
 
 No issues with acceptance criteria testing. All fully implemented user stories pass their acceptance criteria tests. 
 
