@@ -31,6 +31,7 @@ Money For Masterminds is a management system that allows super villains to put o
 | Manager | A super villain/admin who has Needs and wants funding for their plans |
 | Helper | A user who can fund a Manager's Needs |
 | Checkout | The process by which a Helper funds all the Needs in their Funding Basket |
+| DAO | Data Access Object. A class that interacts with a file to retrieve information. |
 
 ## Requirements
 
@@ -78,6 +79,8 @@ STORIES
 
 ### Enhancements
 
+Money for Masterminds implements the addition of a password to the log-in. This increases the security of our application and ensures users only have access to their own accounts. 
+
 Money for Masterminds implements a 'riddles' enhancement. This creates an extra step in the log-in phase for users that prompts them with a difficult riddle, increasing security for the website. If the user correctly answers the riddle (in addition to their username and password), only then can they access the website. Managers are also able to create and edit riddles to their liking sos they can better secure their page.
 
 ## Application Domain
@@ -89,6 +92,7 @@ This section describes the application domain.
 The foundation of the Money For Masterminds application is the `Need`. A `Need` is a representation of a single component that a villain requires to complete their schemes.  
 A villain or the `Manager` is able to manage their specific list of `Needs` through the `Cupboard`.  
 A `Helper` is someone who is trying to fund a villain. They are able to search through the `Cupboard` for `Needs` they are looking to sponsor, and add them to a `Funding Basket`, which acts as a shopping cart. Through the `Funding Basket`, `Helpers` are able to remove `Needs` or `Checkout`, which represents the donations being made towards the specific `Needs` found in the `Funding Basket`. 
+A `Riddle` is a representation of a question that a `User` will need to answer in order to gain access to all other functionality. 
 
 
 ## Architecture and Design
@@ -233,8 +237,7 @@ Ensure pseudorandom generator is safe to use
 ![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/7355ffc7-bbf7-480d-8327-d455a2719039)
 
 
-
-We can refactor our css files to include generic font families. We could also ensure that any unsued imports, classes, or functions are removed from our project. 
+We can refactor our CSS files to include generic font families. We could also ensure that any unused imports, classes, or functions are removed from our project. We can also improve our design by making sure that we remove any duplicate functions and methods by moving them to interfaces or any superclasses.
 
 ## Testing
 
