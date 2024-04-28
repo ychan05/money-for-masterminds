@@ -103,7 +103,7 @@ This section describes the application architecture.
 
 The following Tiers/Layers model shows a high-level view of the webapp's architecture. 
 
-![The Tiers & Layers of the Architecture](architecture-tiers-and-layers.png)
+![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/14b0bafd-2408-4b6c-8e5c-419a5be72fa2)
 
 The web application, is built using the Model–View–ViewModel (MVVM) architecture pattern. 
 
@@ -147,10 +147,10 @@ If the funding basket is already empty, then it will fail and won't execute chec
  >* _Include other details such as attributes and method signatures that you think are needed to support the level of detail in your discussion._
 
 ### ViewModel Tier
-CupboardController: Used to handle HTTP requests to the API for manager and helper interactions with the cupboard.  
-HelperController: Used to handle HTTP requests to the API for managing the funding basket.
-RiddlesDAO: Used to handle HTTP requests to the API for managing riddles
-AuthenticatorDAO: Used to handle HTTP requests to the API for managing user creation and authentication. 
+CupboardController: Used to handle HTTP requests to the API for manager and helper interactions with the cupboard.     
+HelperController: Used to handle HTTP requests to the API for managing the funding basket.   
+AuthenticatorController: Used to handle HTTP requests to the API for managing Users.   
+RiddleController:  Used to handle HTTP requests to the API for managing the Riddles.   
 
 > _**[Sprint 4]** Provide a summary of this tier of your architecture. This
 > section will follow the same instructions that are given for the View
@@ -163,11 +163,12 @@ AuthenticatorDAO: Used to handle HTTP requests to the API for managing user crea
 
 ### Model Tier
 Need: Object representation of a need.  
-CupboardFileDAO: Used to interact with the file storage system and perform CRUD operations on Need objects.
-User: Object representation of a user.
-HelperFileDao: Used to interact with the file storage system and perform CRUD operations on User object funding baskets
-Riddle: Object representation of a user
-RiddleFileDAO: Used to interact with the file storage system and perform CRUD operations on riddles. 
+CupboardFileDAO: Used to interact with the file storage system and perform CRUD operations on Need objects.  
+User: Object representation of a user.  
+HelperFileDAO: Used to interact with the file storage system and perform CRUD operations on User object funding baskets  
+Riddle: Object representation of a user  
+RiddleFileDAO: Used to interact with the file storage system and perform CRUD operations on riddles.   
+AuthenticatorFileDAO: Used to interact with the file storage system and perform CRUD operations on User objects    
 
 
 ![Replace with your Model Tier class diagram 1, etc.](model-1.png)
