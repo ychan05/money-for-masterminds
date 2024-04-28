@@ -243,6 +243,11 @@ No issues with acceptance criteria testing. All fully implemented user stories p
 ### Unit Testing and Code Coverage
 
 ![Code Coverage](code-coverage.png)
+![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/f4a6af61-a386-44d7-9a20-bb5a5c9eff83)
+![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/bf9c853a-8c3a-4c8c-8713-92d75951f5ab)
+![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/0f43f42e-b525-4ca5-8d00-eb679b1ebbc2)
+![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/c8b6b4e0-5858-4cf0-878b-8d9e3b37971b)
+
 
 ## Ongoing Rationale
 
