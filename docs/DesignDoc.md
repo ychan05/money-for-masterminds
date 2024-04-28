@@ -171,41 +171,49 @@ RiddleFileDAO: Used to interact with the file storage system and perform CRUD op
 
 ## OO Design Principles
 
-**Single Responsibility:** In sprint 1, the single responsibility principle is used to ensure that each class we create for our API  is only responsible for one aspect of the functionality. We separate our classes into the Model, Persistence, and Controller tiers. In the Model tier, we have the Need class, which acts as a reperesentation of a need but is not responsible for managing CRUD operations. In the Persistence tier, we have a CupboardFileDAO class which is responsible for managing only interacting with the file system and performing CRUD operations on Need objects. Finally, in the Controller tier, we have the CupboardController, which is only responsible for responding to client HTTP requests.  
+**Single Responsibility:** In sprint 1, the single responsibility principle is used to ensure that each class we create for our API  is only responsible for one aspect of the functionality. We separate our classes into the Model, Persistence, and Controller tiers. In the Model tier, we have the Need class, which acts as a reperesentation of a need but is not responsible for managing CRUD operations. In the Persistence tier, we have a CupboardFileDAO class which is responsible for managing only interacting with the file system and performing CRUD operations on Need objects. Finally, in the Controller tier, we have the Cupboard, Authenticator, and Helper Controllers, which are only responsible for responding to client HTTP requests.  
 
 ![SR](sr.png)
 
-**Open/Closed:** We use the open/closed principle in sprint 1 mainly in the persistence tier. By creating a CupboardDAO interface, we can easily add additional operations to the API without removing any existing code, and we can work with alternative storage systems simply by creating another implementation of the CupboardDAO interface. This also means that no code needs to be changed in the Controller tier if we were to switch to another storage system. 
+**Open/Closed:** We use the open/closed principle in sprint 1 mainly in the persistence tier. By creating a CupboardDAO interface, we can easily add additional operations to the API without removing any existing code, and we can work with alternative storage systems simply by creating another implementation of the Cupboard, Helper, Riddle, or AuthenticatorDAO interfaces. This also means that no code needs to be changed in the Controller tier if we were to switch to another storage system.
 
 ![open-closed](open_closed.png)
 
-**Low Coupling:** We will use low coupling to limit the number of unnecessary
+**Low Coupling:** We use low coupling to limit the number of unnecessary
 relationships between classes. Working together with single responsibility, low coupling can be
 used to make sure the relationship between classes fits into that classes’ single responsibility.
 Low coupling should not be our biggest priority as long as we don’t overdo the amount of
-relationships between classes. For example, the helper does not need to be directly related to the
-checkout, instead, the funding basket can handle that relationship. Another way we could use
-low coupling is having the manager access needs not through the Need class but through the
+relationships between classes. For example, we use
+low coupling by having the manager access needs not through the Need class but through the
 Cupboard class.
 
-**Information Expert:** We will use information experts to process data efficiently by
-putting those operations in the class with the attribute data. This will make operations, such as
-binary operations, easier to understand when working in certain classes. Information experts
-basically hide the more complicated looking operations in methods so that they can easily be
-repeated and easier to understand when looking over the code. We could use this in the
-Authenticator class so that operations to check the user has correctly logged in can be easily
-accessed by the user class.
+![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/74e421a7-53d2-4eab-8900-56c53a3b2d18)
 
-**Dependency Inversion/Injection:** We focus on creating a layer of abstraction between high and low level modules. With these implementation, we do not need to directly couple between the modules. Instead, we will inject low level modules into high level modules to form loose coupling. We can implement this approach on a Cupboard controller that will interact with the interface CupBoardDAO instead of CupboardFileDAO to minimize tight coupling.
+
+**Information Expert:** We use information experts to process data efficiently by
+putting those operations in the class with the attribute data. This will make operations easier to understand when working in certain classes. Information experts
+basically hide the more complicated looking operations in methods so that they can easily be
+repeated and easier to understand when looking over the code. We have a User class so that operations in the Authenticator to check the user has correctly logged in can be easily
+accessed. Need and Riddle are also examples of Information Expert.
+
+![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/2daa57b1-0f5c-4c53-aefb-e8b9aec15c19)
+
+
+**Dependency Inversion/Injection:** We focus on creating a layer of abstraction between high and low level modules. With these implementation, we do not need to directly couple between the modules. Instead, we will inject low level modules into high level modules to form loose coupling. We can implement this approach on a Cupboard controller that will interact with the interface CupBoardDAO instead of CupboardFileDAO to minimize tight coupling. We also use this approach in all our other Controllers and their respective persistence classes.
+
+![hLJBRi8m4BpxAtmCAlc125KW-X0IBL8Vfwe7Oo_1hR4Zsq6WjlzU1vRATKd30GvHx9cTNO-739rdrjShHRXYpj5nNSqDis9ijBT6AR3qWz3mo-bqTblGgIbBiBZ3aNmrcXMxIboG7NvnH2nhA-bX2RV0FDm3Y4o7Hq6Rrrv17y1LHZkurbxwBP8TCCkN3SDbcgsWe8_UIbssyGKeG74P](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/57a48620-a45c-4ac7-b359-fe3aa6e9a197)
+
 
 
 **Law of Demeter:** We aim to minimize the direct coupling between objects or classes where it is deemed unnecessary. Instead, we opt for the use of intermediaries that already possess established couplings to exchange data. This approach serves to restrict the influence one class has on another, such as when a class may need to change. By doing so, the impact of modifications becomes localized 
-to the immediate coupling, enhancing the maintainability and flexibility of the system. For example, the CupboardDAO exhibits a direct coupling with the Need class. To access the Need class, we follow the route through CupboardDAO, ensuring a more controlled and encapsulated interaction between these components.
+to the immediate coupling, enhancing the maintainability and flexibility of the system. For example, the CupboardDAO exhibits a direct coupling with the Need class. To access the Need class, we follow the route through CupboardDAO, ensuring a more controlled and encapsulated interaction between these components. In our Hepler and Authenticator DAOs, we use this principle with the User class, and Riddle with RiddleDAO.
 
+![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/e4526816-7795-4b54-9b69-9f3477ded91e)
 
-**Pure Fabrication:** Pure fabrication is a term for not real objects, nor is it something special. It is similar to abstractions such as facades, or a proxy. They aren’t necessarily tied to the domain or the problem its solving, but it serves as a helper or a connector between classes. This helps make low coupling and high cohesion a success by providing external systems to aid complex operations.
+**The Controller:** The controller principle is saying that the thing responsible for handling system operations should be a separate class. They are like a mediator between the user interface and logic which increase the flow of information. It is a non-user interface responsible to receive or handle an event. An example of this in our code is the CupboardController class. This is also applied to all other classes in the Controller tier of our API.
 
-**The Controller:** The controllerprinciple is saying that the thing responsible for handling system operations should be a separate class. They are like a mediator between the user interface and logic which increase the flow of information. It is a non-user interface responsible to receive or handle an event.
+![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/25e8bd40-77e0-4ad6-8b7d-6618d8e9e58f)
+
 
 
 ## Static Code Analysis/Future Design Improvements
