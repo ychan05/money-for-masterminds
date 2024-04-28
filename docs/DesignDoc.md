@@ -147,32 +147,28 @@ If the funding basket is already empty, then it will fail and won't execute chec
  >* _Include other details such as attributes and method signatures that you think are needed to support the level of detail in your discussion._
 
 ### ViewModel Tier
+This tier is used to handle any API requests regarding needs, riddles, and user authentication or creation.
+
 CupboardController: Used to handle HTTP requests to the API for manager and helper interactions with the cupboard.     
 HelperController: Used to handle HTTP requests to the API for managing the funding basket.   
 AuthenticatorController: Used to handle HTTP requests to the API for managing Users.   
 RiddleController:  Used to handle HTTP requests to the API for managing the Riddles.   
 
-> _**[Sprint 4]** Provide a summary of this tier of your architecture. This
-> section will follow the same instructions that are given for the View
-> Tier above._
-
-> _At appropriate places as part of this narrative provide **one** or more updated and **properly labeled**
-> static models (UML class diagrams) with some details such as critical attributes and methods._
-> 
-![Replace with your ViewModel Tier class diagram 1, etc.](model-placeholder.png)
+![lLZ1Sjis4BtpAp2vX9xQXruvYH9NJMhFf5Kdba-P721YGx4c0HO0vMJI_dl9XMXlkO6WgdKlDWdiUrZilWMMUksyjBvlcwnif7FY2feExD9eRqtJW1LVCo64k13lLZyLufsfAh3xaIsQ_dYvAX25Z_kfikysHbg5ayl7bmpdlsEhvD_YEe_IdErfAl1lUwrgNVqWtHtul7TWjMoX43VU](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/e9488cad-0f83-4e4a-885e-c8b3dc49a7a8)
 
 ### Model Tier
+This tier provides the classes needed to create and make changes to the underlying file storage systems for Users, Riddles, and Needs.  
+
 Need: Object representation of a need.  
 CupboardFileDAO: Used to interact with the file storage system and perform CRUD operations on Need objects.  
 User: Object representation of a user.  
 HelperFileDAO: Used to interact with the file storage system and perform CRUD operations on User object funding baskets  
+AuthenticatorFileDAO: Used to interact with the file storage system and perform CRUD operations on User objects    
 Riddle: Object representation of a user  
 RiddleFileDAO: Used to interact with the file storage system and perform CRUD operations on riddles.   
-AuthenticatorFileDAO: Used to interact with the file storage system and perform CRUD operations on User objects    
 
+![nLXVRzis47_Nfo3oPCzsiBu6GL6lNRe0RTqbwTCm3BHuTjJAf4fIIOgjttqITIh5AqFPHeeM1H8Uxy-HzzEFTtbXBDUstfLP8Ite3S-1BMjx2z8MERTAlrgksByPQ_xDMAcsXPpK1hJaEpXZrrONSZjd5JVcNcdHIwPdx4EZnEojLlU6NQv-VyYXieMIwCWKMucUEjM4nTTiaDhBkbeh](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/29ae2512-dfad-474e-8513-06dff2feca8a)
 
-![Replace with your Model Tier class diagram 1, etc.](model-1.png)
-![Replace with your Model Tier class diagram 1, etc.](model-2.png)
 
 ## OO Design Principles
 
@@ -238,7 +234,7 @@ Ensure pseudorandom generator is safe to use
 ![image](https://github.com/RIT-SWEN-261-07/team-project-2235-swen-261-07-h-lowercase_h/assets/77934108/7355ffc7-bbf7-480d-8327-d455a2719039)
 
 
-We can refactor our CSS files to include generic font families. We could also ensure that any unused imports, classes, or functions are removed from our project. We can also improve our design by making sure that we remove any duplicate functions and methods by moving them to interfaces or any superclasses.
+We can refactor our CSS files to include generic font families. We could also ensure that any unused imports, classes, or functions are removed from our project. We can also improve our design by making sure that we remove any duplicate functions and methods by moving them to interfaces or any superclasses. To improve our maintainability, we should also update the comments on our functions and methods.
 
 ## Testing
 
