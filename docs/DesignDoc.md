@@ -143,7 +143,10 @@ If the funding basket is already empty, then it will fail and won't execute chec
  >* _Include other details such as attributes and method signatures that you think are needed to support the level of detail in your discussion._
 
 ### ViewModel Tier
-CupboardController: Used to handle HTTP requests to the API.  
+CupboardController: Used to handle HTTP requests to the API for manager and helper interactions with the cupboard.  
+HelperController: Used to handle HTTP requests to the API for managing the funding basket.
+RiddlesDAO: Used to handle HTTP requests to the API for managing riddles
+AuthenticatorDAO: Used to handle HTTP requests to the API for managing user creation and authentication. 
 
 > _**[Sprint 4]** Provide a summary of this tier of your architecture. This
 > section will follow the same instructions that are given for the View
@@ -157,6 +160,11 @@ CupboardController: Used to handle HTTP requests to the API.
 ### Model Tier
 Need: Object representation of a need.  
 CupboardFileDAO: Used to interact with the file storage system and perform CRUD operations on Need objects.
+User: Object representation of a user.
+HelperFileDao: Used to interact with the file storage system and perform CRUD operations on User object funding baskets
+Riddle: Object representation of a user
+RiddleFileDAO: Used to interact with the file storage system and perform CRUD operations on riddles. 
+
 
 ![Replace with your Model Tier class diagram 1, etc.](model-1.png)
 ![Replace with your Model Tier class diagram 1, etc.](model-2.png)
