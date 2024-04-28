@@ -32,6 +32,7 @@ Money For Masterminds is a management system that allows super villains to put o
 | Helper | A user who can fund a Manager's Needs |
 | Checkout | The process by which a Helper funds all the Needs in their Funding Basket |
 | DAO | Data Access Object. A class that interacts with a file to retrieve information. |
+| CRUD | Create, read, update and delete |
 
 ## Requirements
 
