@@ -19,9 +19,10 @@ An online U-Fund/electronic store system built in Java 17 and Angular 17
 
 ## How to run it
 
-1. Clone the repository and go to the root directory.
+1. Clone the repository and go to the `ufund-api` directory.
 2. Execute `mvn compile exec:java`
-3. Open in your browser `http://localhost:8080/`
+3. Open new terminal window and go to `ufund-ui/ufund`
+4. Execute `ng serve --open`
 
 ## Known bugs and disclaimers
 (It may be the case that your implementation is not perfect.)
